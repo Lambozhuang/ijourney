@@ -1,0 +1,15 @@
+{
+  "originHash" : "87ff8f172aee50a53acf2cdc28cecadb08582b0002322b956cdcf937fad1301f",
+  "pins" : [
+    {
+      "identity" : "navigationbarlargetitleitems",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/markvanwijnen/NavigationBarLargeTitleItems",
+      "state" : {
+        "branch" : "master",
+        "revision" : "fcc30c002db356825e5be0c09cca852b4bc51998"
+      }
+    }
+  ],
+  "version" : 3
+}
