@@ -13,7 +13,7 @@ struct ItineraryCard: View {
   
   var body: some View {
     ZStack(alignment: .bottomLeading) {
-      Image(itinerary.imageName!)
+      Image(itinerary.cityName!)
         .resizable()
         .scaledToFill()
         .clipped()
@@ -22,7 +22,7 @@ struct ItineraryCard: View {
       
       HStack {
         VStack(alignment: .leading) {
-          Text("Journey to \(itinerary.cityName)")
+          Text("Journey to \(itinerary.cityName ?? "")")
             .font(.system(.title, design: .serif))
             .fontWeight(.bold)
 //          Text("\(itinerary.startDate.formatted(date: .abbreviated, time: .omitted)) - \(itinerary.endDate.formatted(date: .abbreviated, time: .omitted))")
@@ -39,7 +39,7 @@ struct ItineraryCard: View {
       
     }
     .frame(width: (UIScreen.main.bounds.width - 40), height: 250)
-    .clipShape(.rect(cornerRadius: 20))
+    .clipShape(.rect(cornerRadius: 10))
     
   }
 }

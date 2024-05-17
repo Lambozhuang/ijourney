@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
   var body: some View {
     TabView {
-      CityList()
+      CityList(cities: City.sampleData)
         .tabItem { 
           Image(systemName: "building.2.fill")
           Text("City")

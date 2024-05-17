@@ -17,7 +17,7 @@ struct ItineraryDetail: View {
       
       ZStack(alignment: .bottomLeading) {
         
-        Image(itinerary.imageName!)
+        Image(itinerary.cityName!)
           .resizable()
           .scaledToFill()
           .frame(width: UIScreen.main.bounds.width, height: 300)
@@ -27,7 +27,7 @@ struct ItineraryDetail: View {
           .frame(height: 300)
         
         HStack(alignment: .firstTextBaseline) {
-          Text("Journey to \(itinerary.cityName)")
+          Text("Journey to \(itinerary.cityName ?? "")")
             .font(.system(.title, design: .serif))
             .fontWeight(.bold)
           Text(itinerary.countryName ?? "")

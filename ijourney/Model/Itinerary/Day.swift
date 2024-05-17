@@ -29,7 +29,7 @@ struct Day: Identifiable, Codable {
   }
   
   static let sampleData = Day(dayNumber: 1, pointOfInterestList: [
-    PointOfInterest(name: "Colosseum", imageName: "rome-italy", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
-    PointOfInterest(name: "Colosseum", imageName: "rome-italy", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
+    PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
+    PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
   ])
 }

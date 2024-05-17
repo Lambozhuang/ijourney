@@ -12,8 +12,7 @@ struct PointOfInterest: Identifiable, Hashable, Codable {
   var name: String
   var type: InterestType
   var description: String? = nil
-  
-  var imageName: String? = nil
+
   var imageURL: URL? = nil
   var latitude: Double? = nil
   var longitude: Double? = nil
@@ -25,10 +24,9 @@ struct PointOfInterest: Identifiable, Hashable, Codable {
     case description
   }
   
-  init(name: String, imageName: String, imageURL: URL?, type: InterestType, latitude: Double, longitude: Double, description: String? = nil) {
+  init(name: String, imageURL: URL?, type: InterestType, latitude: Double, longitude: Double, description: String? = nil) {
     self.id = UUID()
     self.name = name
-    self.imageName = imageName
     self.imageURL = imageURL
     self.type = type
     self.latitude = latitude
@@ -57,7 +55,7 @@ struct PointOfInterest: Identifiable, Hashable, Codable {
     
   }
   
-  static let sampleData = PointOfInterest(name: "Colosseum", imageName: "rome-italy", imageURL: nil, type: .historical, latitude: 0, longitude: 0)
+  static let sampleData = PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0)
   
 }
 

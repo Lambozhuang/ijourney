@@ -11,9 +11,12 @@ import SwiftData
 @main
 struct ijourneyApp: App {
   
+  @StateObject private var itineraryViewModel = ItineraryViewModel()
+  
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .environmentObject(itineraryViewModel)
         .tint(.green)
     }
     

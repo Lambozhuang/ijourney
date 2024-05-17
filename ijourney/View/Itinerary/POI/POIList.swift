@@ -13,7 +13,7 @@ struct POIList: View {
   var body: some View {
     
     VStack(alignment: .leading) {
-      Text("Day \(day.dayNumber)")
+      Text("Day \(day.dayNumber ?? 0)")
         .font(.body)
         .bold()
         .foregroundStyle(.secondary)

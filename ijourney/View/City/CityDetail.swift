@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import MapKit
 import Glur
 
 struct CityDetail: View {
-  var itinerary: Itinerary
+  var city: City
+  
   var body: some View {
     
     ScrollView {
       ZStack(alignment: .bottomLeading) {
         
-        Image(itinerary.imageName!)
+        Image(city.name)
           .resizable()
           .scaledToFill()
           .frame(width: UIScreen.main.bounds.width, height: 300)
@@ -27,34 +29,52 @@ struct CityDetail: View {
           .ignoresSafeArea()
         
         HStack(alignment: .firstTextBaseline) {
-          Text(itinerary.cityName ?? "")
+          Text(city.name)
             .font(.system(.largeTitle, design: .serif))
             .fontWeight(.bold)
-          Text(itinerary.countryName ?? "")
+          Text(city.countryName)
             .font(.body)
             .padding(.leading, 10)
+          Spacer()
+          Menu {
+            Button("Option 1", action: {print("1") })
+            Button("Option 2", action: {print("2") })
+          } label: {
+            Image(systemName: "ellipsis.circle")
+              .font(.title2)
+          }
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)
         .padding()
         .offset(y: 25)
-        
       }
-      
-      VStack {
+      .padding(.bottom, 5)
+      VStack(alignment: .leading) {
         
+        Text("Location")
+          .font(.title3)
+          .bold()
+          .padding(.bottom, 5)
+        Map()
+          .frame(height: 250)
+          .clipShape(.rect(cornerRadius: 10))
+          .padding(.bottom, 30)
         
-        Text("Rome (Italian and Latin: Roma, Italian: [ˈroːma] ⓘ) is the capital city of Italy. It is also the capital of the Lazio region, the centre of the Metropolitan City of Rome Capital, and a special comune (municipality) named Comune di Roma Capitale. With 2,860,009 residents in 1,285 km2 (496.1 sq mi),[2] Rome is the country's most populated comune and the third most populous city in the European Union by population within city limits. The Metropolitan City of Rome, with a population of 4,355,725 residents, is the most populous metropolitan city in Italy.[3] Its metropolitan area is the third-most populous within Italy.[5] Rome is located in the central-western portion of the Italian Peninsula, within Lazio (Latium), along the shores of the Tiber. Vatican City (the smallest country in the world)[6] is an independent country inside the city boundaries of Rome, the only existing example of a country within a city. Rome is often referred to as the City of Seven Hills due to its geographic location, and also as the \"Eternal City\". Rome is generally considered to be the cradle of Western civilization and Western Christian culture, and the centre of the Catholic Church.[7][8][9]Rome (Italian and Latin: Roma, Italian: [ˈroːma] ⓘ) is the capital city of Italy. It is also the capital of the Lazio region, the centre of the Metropolitan City of Rome Capital, and a special comune (municipality) named Comune di Roma Capitale. With 2,860,009 residents in 1,285 km2 (496.1 sq mi),[2] Rome is the country's most populated comune and the third most populous city in the European Union by population within city limits. The Metropolitan City of Rome, with a population of 4,355,725 residents, is the most populous metropolitan city in Italy.[3] Its metropolitan area is the third-most populous within Italy.[5] Rome is located in the central-western portion of the Italian Peninsula, within Lazio (Latium), along the shores of the Tiber. Vatican City (the smallest country in the world)[6] is an independent country inside the city boundaries of Rome, the only existing example of a country within a city. Rome is often referred to as the City of Seven Hills due to its geographic location, and also as the \"Eternal City\". Rome is generally considered to be the cradle of Western civilization and Western Christian culture, and the centre of the Catholic Church.[7][8][9]")
-        
-        
+        Text("Description")
+          .font(.title3)
+          .bold()
+          .padding(.bottom, 5)
+        Text(city.description)
         Spacer()
       }
       .padding()
     }
     .navigationBarTitleDisplayMode(.inline)
     .ignoresSafeArea()
+    .toolbarBackground(.automatic, for: .navigationBar)
   }
 }
 
 #Preview {
-  CityDetail(itinerary: Itinerary.sampleData[0])
+  CityDetail(city: City.sampleData[0])
 }
