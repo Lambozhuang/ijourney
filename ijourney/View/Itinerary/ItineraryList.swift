@@ -12,7 +12,7 @@ struct ItineraryList: View {
   
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
   
-  @State private var isPresentingSheet: Bool = false
+  @State private var isPresentingCoountryList: Bool = false
   
   var body: some View {
     NavigationStack {
@@ -41,7 +41,7 @@ struct ItineraryList: View {
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
           Button {
-            isPresentingSheet = true
+            isPresentingCoountryList = true
           } label: {
             Image(systemName: "plus")
           }
@@ -51,8 +51,8 @@ struct ItineraryList: View {
     .task {
       await itineraryViewModel.generateItinerary(cityName: "Paris", countryName: "France")
     }
-    .sheet(isPresented: $isPresentingSheet) {
-      GICountryListView(isPresentingSheet: $isPresentingSheet)
+    .sheet(isPresented: $isPresentingCoountryList) {
+      GICountryListView(isPresentingSheet: $isPresentingCoountryList)
     }
     
   }

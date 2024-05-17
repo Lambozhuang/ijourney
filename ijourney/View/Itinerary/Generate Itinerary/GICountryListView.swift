@@ -10,7 +10,6 @@ import SwiftUI
 struct GICountryListView: View {
   
   @Binding var isPresentingSheet: Bool
-  @State private var showDiscardAlert = false
   @State private var searchText = ""
   
   @State private var itinerary = Itinerary()
@@ -28,7 +27,7 @@ struct GICountryListView: View {
     NavigationStack {
       List {
         ForEach(filteredCountries) { country in
-          NavigationLink(destination: GICityListView(country: country)) {
+          NavigationLink(destination: GICityListView(isPresentingSheet: $isPresentingSheet, country: country)) {
             Text(country.name)
           }
         }
@@ -39,18 +38,13 @@ struct GICountryListView: View {
       .toolbar{
         ToolbarItem(placement: .cancellationAction) {
           Button("Cancel") {
-            showDiscardAlert = true
+            isPresentingSheet = false
           }
         }
         ToolbarItem(placement: .confirmationAction) {
           Button("Add") {
             isPresentingSheet = false
           }
-        }
-      }
-      .confirmationDialog("Are you sure?", isPresented: $showDiscardAlert) {
-        Button("Discard Changes", role: .destructive) {
-          isPresentingSheet = false
         }
       }
     }
