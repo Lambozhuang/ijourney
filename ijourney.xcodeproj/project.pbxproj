@@ -34,7 +34,6 @@
 		5BCFB85C2BF7BB1A00A93C9F /* GICountryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB85B2BF7BB1A00A93C9F /* GICountryListView.swift */; };
 		5BCFB85F2BF7FE8300A93C9F /* country-by-abbreviation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BCFB85E2BF7FE8300A93C9F /* country-by-abbreviation.json */; };
 		5BCFB8612BF7FE8A00A93C9F /* country-by-cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BCFB8602BF7FE8A00A93C9F /* country-by-cities.json */; };
-		5BCFB8632BF8050B00A93C9F /* CityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8622BF8050B00A93C9F /* CityClient.swift */; };
 		5BCFB8652BF8071B00A93C9F /* GICityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8642BF8071B00A93C9F /* GICityListView.swift */; };
 		5BCFB8672BF808F500A93C9F /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8662BF808F500A93C9F /* Country.swift */; };
 		5BF470DB2BF677F30012CD72 /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF470DA2BF677F30012CD72 /* Glur */; };
@@ -86,7 +85,6 @@
 		5BCFB85B2BF7BB1A00A93C9F /* GICountryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GICountryListView.swift; sourceTree = "<group>"; };
 		5BCFB85E2BF7FE8300A93C9F /* country-by-abbreviation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "country-by-abbreviation.json"; sourceTree = "<group>"; };
 		5BCFB8602BF7FE8A00A93C9F /* country-by-cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "country-by-cities.json"; sourceTree = "<group>"; };
-		5BCFB8622BF8050B00A93C9F /* CityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityClient.swift; sourceTree = "<group>"; };
 		5BCFB8642BF8071B00A93C9F /* GICityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GICityListView.swift; sourceTree = "<group>"; };
 		5BCFB8662BF808F500A93C9F /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		5BF470DF2BF684350012CD72 /* CityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetail.swift; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 			children = (
 				5BCFB8562BF7AE2900A93C9F /* HTTPDataDownloader.swift */,
 				5BCFB8582BF7AE8B00A93C9F /* ItineraryClient.swift */,
-				5BCFB8622BF8050B00A93C9F /* CityClient.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -425,7 +422,6 @@
 				5BCFB8442BF79B6A00A93C9F /* City.swift in Sources */,
 				5B6B7D592BF6CEC00040B5AA /* POIDetail.swift in Sources */,
 				5BF470E62BF6858B0012CD72 /* CityCard.swift in Sources */,
-				5BCFB8632BF8050B00A93C9F /* CityClient.swift in Sources */,
 				5B18D38D2BE2D9EF00C9827B /* ItineraryList.swift in Sources */,
 				5BF470E22BF6854C0012CD72 /* ContentView.swift in Sources */,
 				5BC1C3C62BF6BB45005CDD72 /* PointOfInterest.swift in Sources */,
