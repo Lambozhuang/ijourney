@@ -71,7 +71,7 @@ struct CityDetail: View {
           .font(.title3)
           .bold()
           .padding(.bottom, 5)
-        Text(city.description)
+        Text(city.description ?? "")
         Spacer()
       }
       .padding()

@@ -39,7 +39,7 @@ struct CityList: View {
           .listRowBackground(Color.clear)
           .listRowSeparator(.hidden)
         }
-        .navigationTitle("City")
+        .navigationTitle("Explore Cities")
         .listStyle(.plain)
         
       }

@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct City: Identifiable {
+struct City: Identifiable, Codable {
   let id: UUID
   var name: String
   var countryName: String
-  var description: String
+  var description: String?
   
-  init(name: String, countryName: String, description: String) {
+  init(name: String, countryName: String, description: String? = nil) {
     self.id = UUID()
     self.name = name
     self.countryName = countryName
