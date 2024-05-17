@@ -6,38 +6,40 @@
 //
 
 import SwiftUI
+import Glur
 
 struct ItineraryCard: View {
   var itinerary: Itinerary
   
   var body: some View {
-    VStack {
+    ZStack(alignment: .bottomLeading) {
       Image(itinerary.imageName!)
         .resizable()
         .scaledToFill()
-        .frame(height: 150)
         .clipped()
+        .frame(width: (UIScreen.main.bounds.width - 40), height: 250)
+        .glur(radius: 2)
+      
       HStack {
         VStack(alignment: .leading) {
-          Text(itinerary.cityName)
-            .font(.title)
+          Text("Journey to \(itinerary.cityName)")
+            .font(.system(.title, design: .serif))
             .fontWeight(.bold)
-          Text("\(itinerary.startDate.formatted(date: .abbreviated, time: .omitted)) - \(itinerary.endDate.formatted(date: .abbreviated, time: .omitted))")
+//          Text("\(itinerary.startDate.formatted(date: .abbreviated, time: .omitted)) - \(itinerary.endDate.formatted(date: .abbreviated, time: .omitted))")
         }
+        .foregroundStyle(.white)
+        
         Spacer()
         
         Image(systemName: "chevron.right")
           .font(.title)
       }
+      .shadow(radius: 2)
       .padding([.leading, .trailing, .bottom])
+      
     }
+    .frame(width: (UIScreen.main.bounds.width - 40), height: 250)
     .clipShape(.rect(cornerRadius: 20))
-    .background(
-      Rectangle()
-        .fill(.fill)
-        .clipShape(.rect(cornerRadius: 20))
-        .shadow(radius: 5)
-    )
     
   }
 }
