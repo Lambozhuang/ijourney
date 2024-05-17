@@ -51,10 +51,17 @@ struct CityDetail: View {
       .padding(.bottom, 5)
       VStack(alignment: .leading) {
         
-        Text("Location")
-          .font(.title3)
-          .bold()
-          .padding(.bottom, 5)
+        HStack(alignment: .firstTextBaseline) {
+          Text("Location")
+            .font(.title3)
+            .bold()
+          Spacer()
+          Button {
+            
+          } label: {
+            Text("View in Maps")
+          }
+        }
         Map()
           .frame(height: 250)
           .clipShape(.rect(cornerRadius: 10))
@@ -70,8 +77,8 @@ struct CityDetail: View {
       .padding()
     }
     .navigationBarTitleDisplayMode(.inline)
-    .ignoresSafeArea()
     .toolbarBackground(.automatic, for: .navigationBar)
+    .ignoresSafeArea(edges: .top)
   }
 }
 

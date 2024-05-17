@@ -12,38 +12,30 @@ struct POIList: View {
   
   var body: some View {
     
-    VStack(alignment: .leading) {
-      Text("Day \(day.dayNumber ?? 0)")
-        .font(.body)
-        .bold()
-        .foregroundStyle(.secondary)
-      
-      LazyVStack {
-        ForEach(day.pointOfInterestList) { poi in
-          NavigationLink {
-            POIDetail(poi: poi)
-          } label: {
-            POICard(poi: poi)
-          }
-          .padding([.leading, .trailing])
-          .tint(.primary)
-          
-          if poi != day.pointOfInterestList.last {
-            Divider()
-              .padding(.top, 5)
-              .padding(.leading)
-          }
+    LazyVStack {
+      ForEach(day.pointOfInterestList) { poi in
+        NavigationLink {
+          POIDetail(poi: poi)
+        } label: {
+          POICard(poi: poi)
+        }
+        .padding([.leading, .trailing])
+        .tint(.primary)
+        
+        if poi != day.pointOfInterestList.last {
+          Divider()
+            .padding(.top, 5)
+            .padding(.leading)
         }
       }
-      .padding([.top, .bottom])
-      .clipShape(.rect(cornerRadius: 10))
-      .background(
-        Rectangle()
-          .fill(.fill)
-          .clipShape(.rect(cornerRadius: 10))
-      )
     }
-    .padding(.bottom)
+    .padding([.top, .bottom])
+    .clipShape(.rect(cornerRadius: 10))
+    .background(
+      Rectangle()
+        .fill(.fill)
+        .clipShape(.rect(cornerRadius: 10))
+    )
   }
 }
 

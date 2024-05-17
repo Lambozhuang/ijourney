@@ -9,13 +9,16 @@ import SwiftUI
 import SwiftData
 
 struct ItineraryList: View {
-  @State var itineraries: [Itinerary]
+  
+  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  
+  @State private var showGenerateItinerary: Bool = false
   
   var body: some View {
     NavigationStack {
       ZStack(alignment: .bottomTrailing) {
         List {
-          ForEach(itineraries) { itinerary in
+          ForEach(itineraryViewModel.itineraryList) { itinerary in
             ZStack {
 
               ItineraryCard(itinerary: itinerary)
@@ -38,18 +41,25 @@ struct ItineraryList: View {
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
           Button {
-            
+            showGenerateItinerary.toggle()
           } label: {
             Image(systemName: "plus")
           }
         }
       }
     }
+    .task {
+      await itineraryViewModel.generateItinerary(cityName: "Paris", countryName: "France")
+    }
+    .sheet(isPresented: $showGenerateItinerary) {
+      GenerateItineraryView()
+    }
     
   }
 }
 
 #Preview {
-  ItineraryList(itineraries: Itinerary.sampleData)
+  ItineraryList()
+    .environmentObject(ItineraryViewModel(client: ItineraryClient(downloader: TestDownloader())))
     .tint(.green)
 }

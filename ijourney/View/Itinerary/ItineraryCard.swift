@@ -13,7 +13,7 @@ struct ItineraryCard: View {
   
   var body: some View {
     ZStack(alignment: .bottomLeading) {
-      Image(itinerary.cityName!)
+      Image(itinerary.cityName ?? "")
         .resizable()
         .scaledToFill()
         .clipped()

@@ -17,7 +17,7 @@ struct ItineraryDetail: View {
       
       ZStack(alignment: .bottomLeading) {
         
-        Image(itinerary.cityName!)
+        Image(itinerary.cityName ?? "")
           .resizable()
           .scaledToFill()
           .frame(width: UIScreen.main.bounds.width, height: 300)
@@ -60,16 +60,35 @@ struct ItineraryDetail: View {
           .padding(.bottom, 5)
         
         ForEach(itinerary.days) { day in
-          POIList(day: day)
+          VStack(alignment: .leading) {
+            Text("Day \(day.dayNumber ?? 0)")
+              .font(.body)
+              .bold()
+              .foregroundStyle(.secondary)
+            POIList(day: day)
+            
+          }
+          .padding(.bottom)
+          
         }
         
         Spacer()
       }
       .padding()
     }
-    .ignoresSafeArea()
     .navigationBarTitleDisplayMode(.inline)
     .toolbarBackground(.automatic, for: .navigationBar)
+    .ignoresSafeArea(edges: .top)
+    .toolbar {
+      ToolbarItem {
+        Menu {
+          Button("Option 1", action: {print("1") })
+          Button("Option 2", action: {print("2") })
+        } label: {
+          Image(systemName: "ellipsis.circle")
+        }
+      }
+    }
     
   }
 }

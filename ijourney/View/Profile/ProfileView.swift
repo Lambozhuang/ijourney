@@ -17,7 +17,7 @@ struct ProfileView: View {
         Section {
           HStack {
             Image(systemName: "person.circle")
-              .font(.system(size: 100))
+              .font(.system(size: 70))
             VStack(alignment: .leading) {
               Text(profile.name)
                 .font(.largeTitle)

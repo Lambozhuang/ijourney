@@ -11,7 +11,7 @@ import SwiftData
 @main
 struct ijourneyApp: App {
   
-  @StateObject private var itineraryViewModel = ItineraryViewModel()
+  @StateObject private var itineraryViewModel = ItineraryViewModel(client: ItineraryClient(downloader: TestDownloader()))
   
   var body: some Scene {
     WindowGroup {

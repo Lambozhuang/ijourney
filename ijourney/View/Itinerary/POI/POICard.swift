@@ -27,11 +27,21 @@ struct POICard: View {
       }
       .frame(height: 50)
       
-      Image(poi.name)
+      Image("")
         .resizable()
         .scaledToFill()
         .frame(height: 150)
         .clipShape(.rect(cornerRadius: 10))
+        .background(
+          ZStack {
+            Rectangle()
+              .fill(.placeholder)
+            .clipShape(.rect(cornerRadius: 10))
+            Image(systemName: "photo")
+              .font(.system(size: 50))
+              .foregroundStyle(.secondary)
+          }
+        )
     }
   }
 }

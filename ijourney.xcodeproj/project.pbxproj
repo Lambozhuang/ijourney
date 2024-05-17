@@ -28,6 +28,10 @@
 		5BCFB84D2BF7A26100A93C9F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB84C2BF7A26100A93C9F /* Profile.swift */; };
 		5BCFB84F2BF7A46D00A93C9F /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB84E2BF7A46D00A93C9F /* EditProfile.swift */; };
 		5BCFB8512BF7A49600A93C9F /* EditInterestLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8502BF7A49600A93C9F /* EditInterestLevel.swift */; };
+		5BCFB8542BF7ADCF00A93C9F /* TestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8532BF7ADCF00A93C9F /* TestDownloader.swift */; };
+		5BCFB8572BF7AE2900A93C9F /* HTTPDataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8562BF7AE2900A93C9F /* HTTPDataDownloader.swift */; };
+		5BCFB8592BF7AE8B00A93C9F /* ItineraryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8582BF7AE8B00A93C9F /* ItineraryClient.swift */; };
+		5BCFB85C2BF7BB1A00A93C9F /* GenerateItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB85B2BF7BB1A00A93C9F /* GenerateItineraryView.swift */; };
 		5BF470DB2BF677F30012CD72 /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF470DA2BF677F30012CD72 /* Glur */; };
 		5BF470E02BF684350012CD72 /* CityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470DF2BF684350012CD72 /* CityDetail.swift */; };
 		5BF470E22BF6854C0012CD72 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470E12BF6854C0012CD72 /* ContentView.swift */; };
@@ -58,7 +62,6 @@
 		5B18D39D2BE2D9F000C9827B /* ijourneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ijourneyTests.swift; sourceTree = "<group>"; };
 		5B6B7D582BF6CEC00040B5AA /* POIDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetail.swift; sourceTree = "<group>"; };
 		5BA894502BEA5CE300BF3E48 /* ItineraryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryCard.swift; sourceTree = "<group>"; };
-		5BA894522BEA799F00BF3E48 /* ItinerarySampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerarySampleData.swift; sourceTree = "<group>"; };
 		5BA894582BEA948300BF3E48 /* ItineraryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryDetail.swift; sourceTree = "<group>"; };
 		5BC1C3C12BF6B87F005CDD72 /* POIList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIList.swift; sourceTree = "<group>"; };
 		5BC1C3C32BF6BA56005CDD72 /* POICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POICard.swift; sourceTree = "<group>"; };
@@ -72,6 +75,10 @@
 		5BCFB84C2BF7A26100A93C9F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5BCFB84E2BF7A46D00A93C9F /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		5BCFB8502BF7A49600A93C9F /* EditInterestLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInterestLevel.swift; sourceTree = "<group>"; };
+		5BCFB8532BF7ADCF00A93C9F /* TestDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDownloader.swift; sourceTree = "<group>"; };
+		5BCFB8562BF7AE2900A93C9F /* HTTPDataDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDataDownloader.swift; sourceTree = "<group>"; };
+		5BCFB8582BF7AE8B00A93C9F /* ItineraryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryClient.swift; sourceTree = "<group>"; };
+		5BCFB85B2BF7BB1A00A93C9F /* GenerateItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateItineraryView.swift; sourceTree = "<group>"; };
 		5BF470DF2BF684350012CD72 /* CityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetail.swift; sourceTree = "<group>"; };
 		5BF470E12BF6854C0012CD72 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BF470E32BF685820012CD72 /* CityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
@@ -122,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				5B18D38A2BE2D9EF00C9827B /* ijourneyApp.swift */,
+				5BCFB8552BF7AE1C00A93C9F /* Service */,
 				5BA8944E2BEA57FC00BF3E48 /* Model */,
 				5BA8944F2BEA580600BF3E48 /* View */,
 				5BF470E92BF6869D0012CD72 /* Extension */,
@@ -135,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				5B18D3932BE2D9F000C9827B /* Preview Assets.xcassets */,
-				5BA894522BEA799F00BF3E48 /* ItinerarySampleData.swift */,
+				5BCFB8532BF7ADCF00A93C9F /* TestDownloader.swift */,
 				5BCFB83E2BF7843300A93C9F /* TestData.swift */,
 			);
 			path = "Preview Content";
@@ -216,6 +224,23 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		5BCFB8552BF7AE1C00A93C9F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5BCFB8562BF7AE2900A93C9F /* HTTPDataDownloader.swift */,
+				5BCFB8582BF7AE8B00A93C9F /* ItineraryClient.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5BCFB85A2BF7BAFE00A93C9F /* Generate Itinerary */ = {
+			isa = PBXGroup;
+			children = (
+				5BCFB85B2BF7BB1A00A93C9F /* GenerateItineraryView.swift */,
+			);
+			path = "Generate Itinerary";
+			sourceTree = "<group>";
+		};
 		5BF470DC2BF684040012CD72 /* City */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +258,7 @@
 				5BA894502BEA5CE300BF3E48 /* ItineraryCard.swift */,
 				5BA894582BEA948300BF3E48 /* ItineraryDetail.swift */,
 				5B6B7D612BF6F0290040B5AA /* POI */,
+				5BCFB85A2BF7BAFE00A93C9F /* Generate Itinerary */,
 			);
 			path = Itinerary;
 			sourceTree = "<group>";
@@ -361,11 +387,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCFB8542BF7ADCF00A93C9F /* TestDownloader.swift in Sources */,
 				5BA894592BEA948300BF3E48 /* ItineraryDetail.swift in Sources */,
+				5BCFB8592BF7AE8B00A93C9F /* ItineraryClient.swift in Sources */,
 				5BCFB8402BF785B600A93C9F /* TestData.swift in Sources */,
 				5BF470E42BF685820012CD72 /* CityList.swift in Sources */,
 				5BC1C3C82BF6C184005CDD72 /* Day.swift in Sources */,
 				5BC1C3C42BF6BA56005CDD72 /* POICard.swift in Sources */,
+				5BCFB85C2BF7BB1A00A93C9F /* GenerateItineraryView.swift in Sources */,
 				5BC1C3C22BF6B87F005CDD72 /* POIList.swift in Sources */,
 				5BCFB8442BF79B6A00A93C9F /* City.swift in Sources */,
 				5B6B7D592BF6CEC00040B5AA /* POIDetail.swift in Sources */,
@@ -384,6 +413,7 @@
 				5BCFB84D2BF7A26100A93C9F /* Profile.swift in Sources */,
 				5BCFB84B2BF79C4B00A93C9F /* CityViewModel.swift in Sources */,
 				5BCFB8512BF7A49600A93C9F /* EditInterestLevel.swift in Sources */,
+				5BCFB8572BF7AE2900A93C9F /* HTTPDataDownloader.swift in Sources */,
 				5BCFB83D2BF7836600A93C9F /* ItineraryError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
