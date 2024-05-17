@@ -25,6 +25,9 @@
 		5BCFB8422BF79AD600A93C9F /* ItineraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8412BF79AD600A93C9F /* ItineraryViewModel.swift */; };
 		5BCFB8442BF79B6A00A93C9F /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8432BF79B6A00A93C9F /* City.swift */; };
 		5BCFB84B2BF79C4B00A93C9F /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB84A2BF79C4B00A93C9F /* CityViewModel.swift */; };
+		5BCFB84D2BF7A26100A93C9F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB84C2BF7A26100A93C9F /* Profile.swift */; };
+		5BCFB84F2BF7A46D00A93C9F /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB84E2BF7A46D00A93C9F /* EditProfile.swift */; };
+		5BCFB8512BF7A49600A93C9F /* EditInterestLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8502BF7A49600A93C9F /* EditInterestLevel.swift */; };
 		5BF470DB2BF677F30012CD72 /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF470DA2BF677F30012CD72 /* Glur */; };
 		5BF470E02BF684350012CD72 /* CityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470DF2BF684350012CD72 /* CityDetail.swift */; };
 		5BF470E22BF6854C0012CD72 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470E12BF6854C0012CD72 /* ContentView.swift */; };
@@ -66,6 +69,9 @@
 		5BCFB8412BF79AD600A93C9F /* ItineraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewModel.swift; sourceTree = "<group>"; };
 		5BCFB8432BF79B6A00A93C9F /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		5BCFB84A2BF79C4B00A93C9F /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
+		5BCFB84C2BF7A26100A93C9F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		5BCFB84E2BF7A46D00A93C9F /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		5BCFB8502BF7A49600A93C9F /* EditInterestLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInterestLevel.swift; sourceTree = "<group>"; };
 		5BF470DF2BF684350012CD72 /* CityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetail.swift; sourceTree = "<group>"; };
 		5BF470E12BF6854C0012CD72 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BF470E32BF685820012CD72 /* CityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 		5BCFB8492BF79B8D00A93C9F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				5BCFB84C2BF7A26100A93C9F /* Profile.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -234,6 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				5BF470E72BF6859B0012CD72 /* ProfileView.swift */,
+				5BCFB84E2BF7A46D00A93C9F /* EditProfile.swift */,
+				5BCFB8502BF7A49600A93C9F /* EditInterestLevel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -369,9 +378,12 @@
 				5B18D38B2BE2D9EF00C9827B /* ijourneyApp.swift in Sources */,
 				5BF470E02BF684350012CD72 /* CityDetail.swift in Sources */,
 				5BCFB8422BF79AD600A93C9F /* ItineraryViewModel.swift in Sources */,
+				5BCFB84F2BF7A46D00A93C9F /* EditProfile.swift in Sources */,
 				5BF470E82BF6859B0012CD72 /* ProfileView.swift in Sources */,
 				5BA894512BEA5CE300BF3E48 /* ItineraryCard.swift in Sources */,
+				5BCFB84D2BF7A26100A93C9F /* Profile.swift in Sources */,
 				5BCFB84B2BF79C4B00A93C9F /* CityViewModel.swift in Sources */,
+				5BCFB8512BF7A49600A93C9F /* EditInterestLevel.swift in Sources */,
 				5BCFB83D2BF7836600A93C9F /* ItineraryError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
