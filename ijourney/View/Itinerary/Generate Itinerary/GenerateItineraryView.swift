@@ -12,16 +12,49 @@ struct GenerateItineraryView: View {
   @Environment(\.dismiss) var dismiss
   
   @State private var showDiscardAlert = false
+  @State private var showEditInterestLevel = false
+  
+  @State private var startDate: Date = .now
+  @State private var endDate: Date = .now
 
   var city: City
   
   var body: some View {
     NavigationStack {
-      Form {
-        Text(city.name)
+      List {
+        Section {
+          Image(city.name)
+            .resizable()
+            .scaledToFill()
+            .frame(width: UIScreen.main.bounds.width, height: 150)
+        }
+        
+        Section {
+          LabeledContent("Destination Country", value: city.countryName)
+          LabeledContent("Destination City", value: city.name)
+        } header: {
+          Text("Destination")
+        }
+        
+        Section {
+          DatePicker("Start Date", selection: $startDate, displayedComponents: [.date])
+          DatePicker("End Date", selection: $endDate, displayedComponents: [.date])
+        } header: {
+          Text("Time")
+        }
+        
+        Section {
+          Button {
+            showEditInterestLevel = true
+          } label: {
+            Text("Edit Interest Level")
+          }
+        } header: {
+          Text("Additional Information")
+        }
       }
       .navigationTitle("Generate Itinerary")
-      .navigationBarTitleDisplayMode(.inline)
+      .navigationBarTitleDisplayMode(.large)
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
           Button("Cancel", role: .cancel) {
@@ -29,7 +62,7 @@ struct GenerateItineraryView: View {
           }
         }
         ToolbarItem(placement: .confirmationAction) {
-          Button("Add") {
+          Button("Create") {
             
           }
         }
@@ -40,9 +73,12 @@ struct GenerateItineraryView: View {
         dismiss()
       }
     }
+    .sheet(isPresented: $showEditInterestLevel) {
+      EditInterestLevel()
+    }
   }
 }
 
 #Preview {
-  GenerateItineraryView(city: City(name: "Rome", countryName: "Italy"))
+  GenerateItineraryView(city: City(name: "Paris", countryName: "France"))
 }

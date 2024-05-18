@@ -16,7 +16,7 @@ struct ContentView: View {
       CityList(cities: City.sampleData)
         .tabItem { 
           Image(systemName: "building.2.fill")
-          Text("City")
+          Text("Explore")
         }
       
       ItineraryList()

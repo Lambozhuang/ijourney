@@ -18,7 +18,6 @@ class CityViewModel: ObservableObject {
       return
     }
     
-    // Parse the JSON manually since the structure has changed
     do {
       let jsonCountries = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]]
       var citiesArray: [City] = []

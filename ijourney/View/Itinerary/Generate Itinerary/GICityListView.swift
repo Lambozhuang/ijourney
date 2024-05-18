@@ -38,7 +38,7 @@ struct GICityListView: View {
         }
       }
       .navigationTitle("Choose a city")
-      .navigationBarTitleDisplayMode(.inline)
+      .navigationBarTitleDisplayMode(.large)
       .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
     }
     .onChange(of: selectedCity) { oldValue, newValue in
@@ -78,5 +78,5 @@ struct GICityListView: View {
 }
 
 #Preview {
-  GICityListView(isPresentingSheet: .constant(true), country: Country(name: "China", abbreviation: "TC"))
+  GICityListView(isPresentingSheet: .constant(true), country: Country(name: "France", abbreviation: "TC"))
 }

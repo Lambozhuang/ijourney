@@ -1,0 +1,63 @@
+{
+  "city_name": "Rome",
+  "country_name": "Italy",
+  "itinerary_list": [
+    {
+      "poi_list": [
+        {
+          "name": "Louvre Museum",
+          "type": "Cultural",
+          "description": "Home to thousands of works of art, including the Mona Lisa and the Venus de Milo, the Louvre is a historic monument and the world's largest art museum."
+        },
+        {
+          "name": "Eiffel Tower",
+          "type": "Historical",
+          "description": "A global cultural icon of France and one of the most recognisable structures in the world, the Eiffel Tower offers breathtaking views from its platforms."
+        },
+        {
+          "name": "Luxembourg Gardens",
+          "type": "Nature",
+          "description": "Known for its lawns, tree-lined promenades, flowerbeds, model sailboats on its circular basin, and picturesque Medici Fountain, perfect for a relaxing stroll."
+        }
+      ]
+    },
+    {
+      "poi_list": [
+        {
+          "name": "Montmartre",
+          "type": "Cultural",
+          "description": "This historic area is known for its bohemian lifestyle, the Basilica of the Sacré-Cœur, and as a haven for artists, offering stunning views over Paris."
+        },
+        {
+          "name": "Le Marais",
+          "type": "Shopping",
+          "description": "A historic district spread across parts of the 3rd and 4th arrondissements, known for its vibrant street life, boutiques, galleries, and the Jewish Quarter."
+        },
+        {
+          "name": "Seine River Cruise",
+          "type": "Entertainment",
+          "description": "Experience the beauty of Paris from its historic river, passing by many of its iconic landmarks, perfect for an evening of relaxation and sightseeing."
+        }
+      ]
+    },
+    {
+      "poi_list": [
+        {
+          "name": "Versailles Palace",
+          "type": "Historical",
+          "description": "A symbol of the absolute monarchy of the Ancien Régime, this opulent palace is renowned for its Hall of Mirrors, the Gardens of Versailles, and the Royal Opera."
+        },
+        {
+          "name": "Rue Cler Market",
+          "type": "Food",
+          "description": "A charming pedestrian street known for its permanent market where visitors can shop for gourmet French products, fresh produce, and enjoy local eateries."
+        },
+        {
+          "name": "Moulin Rouge",
+          "type": "Nightlife",
+          "description": "The birthplace of the modern form of the can-can dance, this historic night club offers spectacular musical dance entertainment for its visitors."
+        }
+      ]
+    }
+  ]
+}

@@ -25,7 +25,10 @@ struct ItineraryCard: View {
           Text("Journey to \(itinerary.cityName ?? "")")
             .font(.system(.title, design: .serif))
             .fontWeight(.bold)
-//          Text("\(itinerary.startDate.formatted(date: .abbreviated, time: .omitted)) - \(itinerary.endDate.formatted(date: .abbreviated, time: .omitted))")
+          if let startDate = itinerary.startDate, let endDate = itinerary.endDate {
+            Text("\(startDate.formatted(date: .abbreviated, time: .omitted)) - \(endDate.formatted(date: .abbreviated, time: .omitted))")
+          }
+
         }
         .foregroundStyle(.white)
         

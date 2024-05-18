@@ -33,8 +33,8 @@ struct GICountryListView: View {
         }
       }
       .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-      .navigationTitle("Choose a Country")
-      .navigationBarTitleDisplayMode(.inline)
+      .navigationTitle("Choose a country")
+      .navigationBarTitleDisplayMode(.large)
       .toolbar{
         ToolbarItem(placement: .cancellationAction) {
           Button("Cancel") {

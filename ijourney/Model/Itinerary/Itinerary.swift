@@ -19,6 +19,8 @@ struct Itinerary: Identifiable, Codable {
   var days: [Day] = []
   
   enum CodingKeys: String, CodingKey {
+    case cityName = "city_name"
+    case countryName = "country_name"
     case days = "itinerary_list"
   }
   
@@ -36,6 +38,8 @@ struct Itinerary: Identifiable, Codable {
   
   init(from decoder: any Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
+    self.cityName = try container.decode(String.self, forKey: .cityName)
+    self.countryName = try container.decode(String.self, forKey: .countryName)
     self.days = try container.decode([Day].self, forKey: .days)
   }
   

@@ -49,7 +49,7 @@ struct ItineraryList: View {
       }
     }
     .task {
-      await itineraryViewModel.generateItinerary(cityName: "Paris", countryName: "France")
+      await itineraryViewModel.loadSampleData()
     }
     .sheet(isPresented: $isPresentingCoountryList) {
       GICountryListView(isPresentingSheet: $isPresentingCoountryList)

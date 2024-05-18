@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct EditProfile: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  
+  @State private var name: String = ""
+  @State private var birthday: Date = .now
+  
+  var body: some View {
+    Form {
+      Section {
+        TextField(text: $name, prompt: Text("Name")) {
+          Text("Name")
+        }
+        DatePicker("Birthday", selection: $birthday, displayedComponents: [.date])
+      } header: {
+        Text("Personal Information")
+      }
+      
+      Section {
+//        Picker("First Language", selection: <#T##Binding<SelectionValue>#>)
+      } header: {
+        Text("Additional Information")
+      }
     }
+    .navigationTitle("Edit Profile")
+    .navigationBarTitleDisplayMode(.large)
+  }
 }
 
 #Preview {
-    EditProfile()
+  EditProfile()
 }

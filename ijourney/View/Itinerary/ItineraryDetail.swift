@@ -42,8 +42,10 @@ struct ItineraryDetail: View {
       
       VStack(alignment: .leading) {
         
-//        Text("\(itinerary.startDate.formatted(date: .abbreviated, time: .omitted)) - \(itinerary.endDate.formatted(date: .abbreviated, time: .omitted))")
-//          .padding(.bottom, 30)
+        if let startDate = itinerary.startDate, let endDate = itinerary.endDate {
+          Text("\(startDate.formatted(date: .abbreviated, time: .omitted)) - \(endDate.formatted(date: .abbreviated, time: .omitted))")
+            .padding(.bottom, 20)
+        }
         
         Text("Location")
           .font(.title3)
@@ -52,16 +54,16 @@ struct ItineraryDetail: View {
         Map()
           .frame(height: 250)
           .clipShape(.rect(cornerRadius: 10))
-          .padding(.bottom, 30)
+          .padding(.bottom, 20)
         
         Text("Itinerary")
           .font(.title3)
           .bold()
           .padding(.bottom, 5)
         
-        ForEach(itinerary.days) { day in
+        ForEach(Array(itinerary.days.enumerated()), id: \.element.id) { index, day in
           VStack(alignment: .leading) {
-            Text("Day \(day.dayNumber ?? 0)")
+            Text("Day \(index + 1)")
               .font(.body)
               .bold()
               .foregroundStyle(.secondary)

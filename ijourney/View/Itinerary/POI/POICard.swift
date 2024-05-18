@@ -27,7 +27,7 @@ struct POICard: View {
       }
       .frame(height: 50)
       
-      Image("")
+      Image(poi.name)
         .resizable()
         .scaledToFill()
         .frame(height: 150)
