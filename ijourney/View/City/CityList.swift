@@ -13,36 +13,26 @@ struct CityList: View {
   
   var body: some View {
     NavigationStack {
-      ZStack(alignment: .bottomTrailing) {
-        List {
-          ForEach(cities) { city in
-            ZStack(alignment: .topTrailing) {
-              CityCard(city: city)
-              NavigationLink {
-                
-                CityDetail(city: city)
-              } label: {
-                EmptyView()
-              }
-              .opacity(0)
+      List {
+        ForEach(cities) { city in
+          ZStack {
+            CityCard(city: city)
+            NavigationLink {
               
-              Menu {
-                Button("Option 1", action: {print("1") })
-                Button("Option 2", action: {print("2") })
-              } label: {
-                Image(systemName: "ellipsis.circle")
-                  .font(.title2)
-                  .padding()
-              }
+              CityDetail(city: city)
+            } label: {
+              EmptyView()
             }
+            .opacity(0)
+            
+            
           }
-          .listRowBackground(Color.clear)
-          .listRowSeparator(.hidden)
         }
-        .navigationTitle("Explore Cities")
-        .listStyle(.plain)
-        
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
       }
+      .navigationTitle("Explore Cities")
+      .listStyle(.plain)
     }
   }
 }

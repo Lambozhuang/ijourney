@@ -33,16 +33,11 @@ struct GICountryListView: View {
         }
       }
       .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-      .navigationTitle("Choose a country")
+      .navigationTitle("Choose a Country")
       .navigationBarTitleDisplayMode(.large)
       .toolbar{
         ToolbarItem(placement: .cancellationAction) {
           Button("Cancel") {
-            isPresentingSheet = false
-          }
-        }
-        ToolbarItem(placement: .confirmationAction) {
-          Button("Add") {
             isPresentingSheet = false
           }
         }

@@ -59,7 +59,7 @@ struct PointOfInterest: Identifiable, Hashable, Codable {
   
 }
 
-enum InterestType: String, Codable {
+enum InterestType: String, Codable, CaseIterable {
   case historical = "Historical"
   case cultural = "Cultural"
   case nature = "Nature"
@@ -69,4 +69,18 @@ enum InterestType: String, Codable {
   case relaxing = "Relaxing"
   case food = "Food"
   case nightlife = "Nightlife"
+  
+  var emoji: String {
+    switch self {
+    case .historical: return "🏛️"
+    case .cultural: return "🎭"
+    case .nature: return "🌲"
+    case .entertainment: return "🎉"
+    case .shopping: return "🛍️"
+    case .adventure: return "🧗‍♂️"
+    case .relaxing: return "🛌"
+    case .food: return "🍲"
+    case .nightlife: return "🌃"
+    }
+  }
 }

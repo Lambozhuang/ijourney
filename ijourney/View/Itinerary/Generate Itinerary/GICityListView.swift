@@ -37,7 +37,7 @@ struct GICityListView: View {
           .tint(.primary)
         }
       }
-      .navigationTitle("Choose a city")
+      .navigationTitle("Choose a City")
       .navigationBarTitleDisplayMode(.large)
       .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
     }

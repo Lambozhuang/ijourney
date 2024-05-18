@@ -14,7 +14,7 @@ struct CityCard: View {
   var body: some View {
     ZStack(alignment: .bottomLeading) {
       VStack {
-        HStack {
+        HStack(alignment: .top) {
           VStack(alignment: .leading) {
             Text(city.name)
               .font(.system(.title, design: .serif))
@@ -23,6 +23,14 @@ struct CityCard: View {
           }
           
           Spacer()
+          
+          Menu {
+            Button("Option 1", action: {print("1") })
+            Button("Option 2", action: {print("2") })
+          } label: {
+            Image(systemName: "ellipsis.circle")
+              .font(.title2)
+          }
         }
         .shadow(radius: 2)
         .padding([.leading, .trailing])

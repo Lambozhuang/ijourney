@@ -11,37 +11,45 @@ struct ProfileView: View {
   
   var profile: Profile
   
+  @State private var showEditProfile = false
+  @State private var showEditInterestLevel = false
+  
   var body: some View {
     NavigationStack {
       List {
         Section {
           HStack {
             Image(systemName: "person.circle")
-              .font(.system(size: 70))
+              .font(.system(size: 60))
             VStack(alignment: .leading) {
               Text(profile.name)
                 .font(.largeTitle)
               Text(profile.birthday.formatted(date: .numeric, time: .omitted))
                 .font(.title3)
             }
+            .padding(.leading)
             Spacer()
           }
           VStack(alignment: .leading) {
             Text("Additional Information")
               .bold()
-            Text("Languages: ")
+            if let secondaryLangauge = profile.secondaryLangauge {
+              Text("Languages: \(profile.primaryLanguage!.displayName), \(secondaryLangauge)")
+            } else {
+              Text("Language: \(profile.primaryLanguage!.displayName)")
+            }
           }
           
         }
         
         Section {
-          NavigationLink {
-            EditProfile()
+          Button {
+            showEditProfile = true
           } label: {
             Text("Edit Profile")
           }
-          NavigationLink {
-            EditInterestLevel()
+          Button {
+            showEditInterestLevel = true
           } label: {
             Text("Edit Interest Level")
           }
@@ -57,6 +65,14 @@ struct ProfileView: View {
         
       }
       .navigationTitle("My Profile")
+      .sheet(isPresented: $showEditProfile) {
+        EditProfile(showEditProfile: $showEditProfile)
+          .interactiveDismissDisabled()
+      }
+      .sheet(isPresented: $showEditInterestLevel) {
+        EditInterestLevel(showEditInterestLevel: $showEditInterestLevel)
+          .interactiveDismissDisabled()
+      }
     }
   }
 }

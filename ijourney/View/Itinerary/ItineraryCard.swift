@@ -36,6 +36,7 @@ struct ItineraryCard: View {
         
         Image(systemName: "chevron.right")
           .font(.title)
+          .foregroundStyle(.white)
       }
       .shadow(radius: 2)
       .padding([.leading, .trailing, .bottom])

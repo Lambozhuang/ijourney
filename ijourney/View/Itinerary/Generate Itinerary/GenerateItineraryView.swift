@@ -74,7 +74,8 @@ struct GenerateItineraryView: View {
       }
     }
     .sheet(isPresented: $showEditInterestLevel) {
-      EditInterestLevel()
+      EditInterestLevel(showEditInterestLevel: $showEditInterestLevel)
+        .interactiveDismissDisabled()
     }
   }
 }
