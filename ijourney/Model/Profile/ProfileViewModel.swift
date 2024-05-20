@@ -15,4 +15,10 @@ class ProfileViewModel: ObservableObject {
   init() {
     
   }
+  
+  static func sampleData() -> ProfileViewModel {
+    var vm = ProfileViewModel()
+    vm.profile = Profile.sampleData
+    return vm
+  }
 }

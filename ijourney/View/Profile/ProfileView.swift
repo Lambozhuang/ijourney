@@ -76,5 +76,5 @@ struct ProfileView: View {
 
 #Preview {
   ProfileView()
-    .environmentObject(ProfileViewModel())
+    .environmentObject(ProfileViewModel.sampleData())
 }

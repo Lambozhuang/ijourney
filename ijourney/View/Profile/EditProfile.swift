@@ -52,7 +52,11 @@ struct EditProfile: View {
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
           Button("Cancel") {
-            showDiscardAlert = true
+            if isChanged {
+              showDiscardAlert = true
+            } else {
+              dismiss()
+            }
           }
         }
         ToolbarItem(placement: .confirmationAction) {
