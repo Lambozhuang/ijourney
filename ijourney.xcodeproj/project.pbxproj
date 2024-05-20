@@ -20,6 +20,7 @@
 		5BC1C3C42BF6BA56005CDD72 /* POICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1C3C32BF6BA56005CDD72 /* POICard.swift */; };
 		5BC1C3C62BF6BB45005CDD72 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1C3C52BF6BB45005CDD72 /* PointOfInterest.swift */; };
 		5BC1C3C82BF6C184005CDD72 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1C3C72BF6C184005CDD72 /* Day.swift */; };
+		5BCA9C072BFBCFE3000DBDE0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA9C062BFBCFE3000DBDE0 /* ProfileViewModel.swift */; };
 		5BCFB83D2BF7836600A93C9F /* ItineraryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB83C2BF7836600A93C9F /* ItineraryError.swift */; };
 		5BCFB8402BF785B600A93C9F /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB83E2BF7843300A93C9F /* TestData.swift */; };
 		5BCFB8422BF79AD600A93C9F /* ItineraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8412BF79AD600A93C9F /* ItineraryViewModel.swift */; };
@@ -76,6 +77,7 @@
 		5BC1C3C32BF6BA56005CDD72 /* POICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POICard.swift; sourceTree = "<group>"; };
 		5BC1C3C52BF6BB45005CDD72 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
 		5BC1C3C72BF6C184005CDD72 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		5BCA9C062BFBCFE3000DBDE0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		5BCFB83C2BF7836600A93C9F /* ItineraryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryError.swift; sourceTree = "<group>"; };
 		5BCFB83E2BF7843300A93C9F /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		5BCFB8412BF79AD600A93C9F /* ItineraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewModel.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				5BCFB84C2BF7A26100A93C9F /* Profile.swift */,
+				5BCA9C062BFBCFE3000DBDE0 /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				5BF470E22BF6854C0012CD72 /* ContentView.swift in Sources */,
 				5BC1C3C62BF6BB45005CDD72 /* PointOfInterest.swift in Sources */,
 				5BF470ED2BF6870B0012CD72 /* Color+AccentColor.swift in Sources */,
+				5BCA9C072BFBCFE3000DBDE0 /* ProfileViewModel.swift in Sources */,
 				5B18D38F2BE2D9EF00C9827B /* Itinerary.swift in Sources */,
 				5B18D38B2BE2D9EF00C9827B /* ijourneyApp.swift in Sources */,
 				5BF470E02BF684350012CD72 /* CityDetail.swift in Sources */,

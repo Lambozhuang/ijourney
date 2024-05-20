@@ -9,16 +9,15 @@ import SwiftUI
 
 struct EditInterestLevel: View {
   
-  @Binding var showEditInterestLevel: Bool
-  @State private var sliderValues: [InterestType: Double] = {
-    var dict = [InterestType: Double]()
-    InterestType.allCases.forEach { dict[$0] = 2.0 }
-    return dict
-  }()
+  @Environment(\.dismiss) var dismiss
   
-  func interestLevel(for interestType: InterestType) -> InterestLevel {
-    let index = Int(sliderValues[interestType] ?? 0)
-    return InterestLevel.allCases[index]
+  @State private var showDiscardAlert = false
+  @Binding var currentInterests: Interests
+  @State private var newInterests = Interests()
+  @State private var sliderValues: [InterestType: Double] = [:]
+  
+  var isChanged: Bool {
+    currentInterests != newInterests
   }
   
   var body: some View {
@@ -32,12 +31,15 @@ struct EditInterestLevel: View {
               Text("\(interestType.emoji) \(interestType.rawValue)")
                 .font(.headline)
               Spacer()
-              Text(interestLevel(for: interestType).rawValue)
+              Text(InterestLevel(value: sliderValues[interestType] ?? 0).rawValue)
                 .font(.subheadline)
             }
             Slider(value: Binding(
               get: { self.sliderValues[interestType] ?? 0.0 },
-              set: { newValue in self.sliderValues[interestType] = newValue }
+              set: { newValue in
+                self.sliderValues[interestType] = newValue
+                self.newInterests[interestType] = InterestLevel(value: newValue)
+              }
             ), in: 0...4, step: 1) {
               Text(interestType.rawValue)
             }
@@ -48,19 +50,32 @@ struct EditInterestLevel: View {
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
           Button("Cancel") {
-            showEditInterestLevel = false
+            showDiscardAlert = true
           }
         }
         ToolbarItem(placement: .confirmationAction) {
           Button("Done") {
-            
+            currentInterests = newInterests
+            dismiss()
           }
         }
       }
     }
+    .confirmationDialog("Are you sure?", isPresented: $showDiscardAlert) {
+      Button("Discard Changes", role: .destructive) {
+        dismiss()
+      }
+    }
+    .onAppear {
+      newInterests = currentInterests
+      InterestType.allCases.forEach {
+        sliderValues[$0] = currentInterests[$0]?.value ?? 2
+      }
+    }
+    .interactiveDismissDisabled(isChanged)
   }
 }
 
 #Preview {
-  EditInterestLevel(showEditInterestLevel: .constant(true))
+  EditInterestLevel(currentInterests: .constant(Interests()))
 }

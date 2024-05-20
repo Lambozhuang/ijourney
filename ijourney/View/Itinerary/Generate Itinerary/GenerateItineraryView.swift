@@ -11,6 +11,8 @@ struct GenerateItineraryView: View {
   
   @Environment(\.dismiss) var dismiss
   
+  @EnvironmentObject var profileViewModel: ProfileViewModel
+  
   @State private var showDiscardAlert = false
   @State private var showEditInterestLevel = false
   
@@ -74,12 +76,12 @@ struct GenerateItineraryView: View {
       }
     }
     .sheet(isPresented: $showEditInterestLevel) {
-      EditInterestLevel(showEditInterestLevel: $showEditInterestLevel)
-        .interactiveDismissDisabled()
+      EditInterestLevel(currentInterests: $profileViewModel.profile.interests)
     }
   }
 }
 
 #Preview {
   GenerateItineraryView(city: City(name: "Paris", countryName: "France"))
+    .environmentObject(ProfileViewModel())
 }

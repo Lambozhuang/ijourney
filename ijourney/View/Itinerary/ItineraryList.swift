@@ -11,6 +11,7 @@ import SwiftData
 struct ItineraryList: View {
   
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  @EnvironmentObject var profileViewModel: ProfileViewModel
   
   @State private var isPresentingCoountryList: Bool = false
   

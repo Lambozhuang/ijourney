@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
   
-  @State var profile: Profile
+  @EnvironmentObject var profileViewModel: ProfileViewModel
   
   @State private var showEditProfile = false
   @State private var showEditInterestLevel = false
@@ -22,9 +22,9 @@ struct ProfileView: View {
             Image(systemName: "person.circle")
               .font(.system(size: 60))
             VStack(alignment: .leading) {
-              Text(profile.name)
+              Text(profileViewModel.profile.name)
                 .font(.largeTitle)
-              Text(profile.birthday.formatted(date: .numeric, time: .omitted))
+              Text(profileViewModel.profile.birthday.formatted(date: .numeric, time: .omitted))
                 .font(.title3)
             }
             .padding(.leading)
@@ -33,10 +33,10 @@ struct ProfileView: View {
           VStack(alignment: .leading) {
             Text("Additional Information")
               .bold()
-            if profile.secondaryLangauge != .none {
-              Text("Languages: \(profile.primaryLanguage.displayName), \(profile.secondaryLangauge)")
+            if profileViewModel.profile.secondaryLangauge != .none {
+              Text("Languages: \(profileViewModel.profile.primaryLanguage.displayName), \(profileViewModel.profile.secondaryLangauge)")
             } else {
-              Text("Language: \(profile.primaryLanguage.displayName)")
+              Text("Language: \(profileViewModel.profile.primaryLanguage.displayName)")
             }
           }
           
@@ -65,16 +65,16 @@ struct ProfileView: View {
       }
       .navigationTitle("My Profile")
       .sheet(isPresented: $showEditProfile) {
-        EditProfile(showEditProfile: $showEditProfile, currentProfile: $profile)
+        EditProfile(showEditProfile: $showEditProfile, currentProfile: $profileViewModel.profile)
       }
       .sheet(isPresented: $showEditInterestLevel) {
-        EditInterestLevel(showEditInterestLevel: $showEditInterestLevel)
-          .interactiveDismissDisabled()
+        EditInterestLevel(currentInterests: $profileViewModel.profile.interests)
       }
     }
   }
 }
 
 #Preview {
-  ProfileView(profile: Profile.sampleData)
+  ProfileView()
+    .environmentObject(ProfileViewModel())
 }

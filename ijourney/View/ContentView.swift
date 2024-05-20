@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
   
-  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
-  
   var body: some View {
     TabView {
       CityList(cities: City.sampleData)
@@ -20,13 +18,12 @@ struct ContentView: View {
         }
       
       ItineraryList()
-        .environmentObject(itineraryViewModel)
         .tabItem {
           Image(systemName: "point.bottomleft.forward.to.point.topright.filled.scurvepath")
           Text("Itinerary")
         }
       
-      ProfileView(profile: Profile.sampleData)
+      ProfileView()
         .tabItem {
           Image(systemName: "person.fill")
           Text("Profile")
