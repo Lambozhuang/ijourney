@@ -84,8 +84,9 @@ struct ItineraryDetail: View {
     .toolbar {
       ToolbarItem {
         Menu {
-          Button("Option 1", action: {print("1") })
-          Button("Option 2", action: {print("2") })
+          Button("Delete Itinerary", role: .destructive) {
+            
+          }
         } label: {
           Image(systemName: "ellipsis.circle")
         }

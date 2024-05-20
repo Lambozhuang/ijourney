@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
   
-  var profile: Profile
+  @State var profile: Profile
   
   @State private var showEditProfile = false
   @State private var showEditInterestLevel = false
@@ -33,10 +33,10 @@ struct ProfileView: View {
           VStack(alignment: .leading) {
             Text("Additional Information")
               .bold()
-            if let secondaryLangauge = profile.secondaryLangauge {
-              Text("Languages: \(profile.primaryLanguage!.displayName), \(secondaryLangauge)")
+            if profile.secondaryLangauge != .none {
+              Text("Languages: \(profile.primaryLanguage.displayName), \(profile.secondaryLangauge)")
             } else {
-              Text("Language: \(profile.primaryLanguage!.displayName)")
+              Text("Language: \(profile.primaryLanguage.displayName)")
             }
           }
           
@@ -62,12 +62,10 @@ struct ProfileView: View {
             Text("About")
           }
         }
-        
       }
       .navigationTitle("My Profile")
       .sheet(isPresented: $showEditProfile) {
-        EditProfile(showEditProfile: $showEditProfile)
-          .interactiveDismissDisabled()
+        EditProfile(showEditProfile: $showEditProfile, currentProfile: $profile)
       }
       .sheet(isPresented: $showEditInterestLevel) {
         EditInterestLevel(showEditInterestLevel: $showEditInterestLevel)

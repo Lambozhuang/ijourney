@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CityCard: View {
   
+  @State private var showCreateItinerary = false
+  
   var city: City
   
   var body: some View {
@@ -25,14 +27,14 @@ struct CityCard: View {
           Spacer()
           
           Menu {
-            Button("Option 1", action: {print("1") })
-            Button("Option 2", action: {print("2") })
+            Button("Create Itinerary") {
+              showCreateItinerary = true
+            }
           } label: {
             Image(systemName: "ellipsis.circle")
               .font(.title2)
           }
         }
-        .shadow(radius: 2)
         .padding([.leading, .trailing])
         
         Image(city.name)
@@ -50,6 +52,9 @@ struct CityCard: View {
         .fill(.fill)
         .clipShape(.rect(cornerRadius: 10))
     )
+    .fullScreenCover(isPresented: $showCreateItinerary) {
+      GenerateItineraryView(city: city)
+    }
   }
 }
 

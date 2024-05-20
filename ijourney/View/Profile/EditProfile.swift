@@ -11,32 +11,34 @@ struct EditProfile: View {
   
   @Environment(\.dismiss) var dismiss
   
-  @State private var name: String = ""
-  @State private var birthday: Date = .now
-  @State private var selectedLanguage1: MajorLanguage = .english
-  @State private var selectedLanguage2: MajorLanguage = .chinese
   @State private var showDiscardAlert = false
   @Binding var showEditProfile: Bool
+  @Binding var currentProfile: Profile
+  @State private var newProfile: Profile = Profile(name: "", birthday: .now)
+  
+  var isChanged: Bool {
+    newProfile != currentProfile
+  }
   
   var body: some View {
     NavigationStack {
       Form {
         Section {
-          TextField(text: $name, prompt: Text("Name")) {
+          TextField(text: $newProfile.name, prompt: Text("Name")) {
             Text("Name")
           }
-          DatePicker("Birthday", selection: $birthday, displayedComponents: [.date])
+          DatePicker("Birthday", selection: $newProfile.birthday, displayedComponents: [.date])
         } header: {
           Text("Personal Information")
         }
         
         Section {
-          Picker("Primary Language", selection: $selectedLanguage1) {
+          Picker("Primary Language", selection: $newProfile.primaryLanguage) {
             ForEach(MajorLanguage.allCases) { language in
               Text(language.displayName).tag(language)
             }
           }
-          Picker("Secondary Language", selection: $selectedLanguage2) {
+          Picker("Secondary Language", selection: $newProfile.secondaryLangauge) {
             ForEach(MajorLanguage.allCases) { language in
               Text(language.displayName).tag(language)
             }
@@ -55,7 +57,8 @@ struct EditProfile: View {
         }
         ToolbarItem(placement: .confirmationAction) {
           Button("Done") {
-            
+            currentProfile = newProfile
+            dismiss()
           }
         }
       }
@@ -64,10 +67,14 @@ struct EditProfile: View {
           dismiss()
         }
       }
+      .onAppear {
+        newProfile = currentProfile
+      }
     }
+    .interactiveDismissDisabled(isChanged)
   }
 }
 
 #Preview {
-  EditProfile(showEditProfile: .constant(true))
+  EditProfile(showEditProfile: .constant(true), currentProfile: .constant(Profile(name: "", birthday: .now)))
 }

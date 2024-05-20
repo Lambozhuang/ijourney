@@ -10,6 +10,9 @@ import MapKit
 import Glur
 
 struct CityDetail: View {
+  
+  @State private var showCreateItinerary = false
+  
   var city: City
   
   var body: some View {
@@ -37,8 +40,9 @@ struct CityDetail: View {
             .padding(.leading, 10)
           Spacer()
           Menu {
-            Button("Option 1", action: {print("1") })
-            Button("Option 2", action: {print("2") })
+            Button("Create Itinerary") {
+              showCreateItinerary = true
+            }
           } label: {
             Image(systemName: "ellipsis.circle")
               .font(.title2)
@@ -79,6 +83,9 @@ struct CityDetail: View {
     .navigationBarTitleDisplayMode(.inline)
     .toolbarBackground(.automatic, for: .navigationBar)
     .ignoresSafeArea(edges: .top)
+    .fullScreenCover(isPresented: $showCreateItinerary) {
+      GenerateItineraryView(city: city)
+    }
   }
 }
 
