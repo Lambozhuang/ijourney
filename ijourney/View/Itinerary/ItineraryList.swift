@@ -61,6 +61,6 @@ struct ItineraryList: View {
 
 #Preview {
   ItineraryList()
-    .environmentObject(ItineraryViewModel(client: ItineraryClient(downloader: TestDownloader())))
+    .environmentObject(ItineraryViewModel(client: ItineraryClient(networkService: TestNetworkService())))
     .tint(.green)
 }

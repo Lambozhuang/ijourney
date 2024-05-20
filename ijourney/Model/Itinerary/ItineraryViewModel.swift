@@ -18,21 +18,32 @@ class ItineraryViewModel: ObservableObject {
     self.client = client
   }
   
-  func generateItinerary(cityName: String, countryName: String) async {
+//  func generateItinerary(cityName: String, countryName: String) async {
+//    do {
+//      var newItinerary = try await client.itinerary
+//      newItinerary.cityName = cityName
+//      newItinerary.countryName = countryName
+//      
+//      for index in newItinerary.days.indices {
+//        newItinerary.days[index].dayNumber = index + 1
+//      }
+//      
+//      self.itineraryList.append(newItinerary)
+//    } catch {
+//      print(error)
+//    }
+//    
+//  }
+  
+  func generateItinerary(systemPrompt: String, userPrompt: String) async {
     do {
-      var newItinerary = try await client.itinerary
-      newItinerary.cityName = cityName
-      newItinerary.countryName = countryName
-      
-      for index in newItinerary.days.indices {
-        newItinerary.days[index].dayNumber = index + 1
+      let newItinerary = try await client.fetchItinerary(systemPrompt: systemPrompt, userPrompt: userPrompt)
+      DispatchQueue.main.async {
+        self.itineraryList.append(newItinerary)
       }
-      
-      self.itineraryList.append(newItinerary)
     } catch {
-      print(error)
+      print("Failed to fetch itinerary: \(error)")
     }
-    
   }
   
   func loadItinerary(from url: URL) throws -> Itinerary {

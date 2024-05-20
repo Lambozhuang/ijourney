@@ -10,5 +10,6 @@ import Foundation
 enum ItineraryError: Error {
   case missingData
   case networkError
+  case decodingError
   case unexpectedError(error: Error)
 }
