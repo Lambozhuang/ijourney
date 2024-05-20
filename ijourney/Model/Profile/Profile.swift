@@ -90,8 +90,8 @@ enum MajorLanguage: String, CaseIterable, Identifiable {
     case .none:
       return "None"
     default:
-      let locale = NSLocale(localeIdentifier: self.rawValue)
-      return locale.displayName(forKey: .identifier, value: self.rawValue) ?? self.rawValue
+      let locale = Locale(identifier: self.rawValue)
+      return locale.localizedString(forIdentifier: self.rawValue) ?? self.rawValue
     }
   }
 }

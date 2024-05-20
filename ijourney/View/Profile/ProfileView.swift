@@ -34,7 +34,7 @@ struct ProfileView: View {
             Text("Additional Information")
               .bold()
             if profileViewModel.profile.secondaryLangauge != .none {
-              Text("Languages: \(profileViewModel.profile.primaryLanguage.displayName), \(profileViewModel.profile.secondaryLangauge)")
+              Text("Languages: \(profileViewModel.profile.primaryLanguage.displayName), \(profileViewModel.profile.secondaryLangauge.displayName)")
             } else {
               Text("Language: \(profileViewModel.profile.primaryLanguage.displayName)")
             }
