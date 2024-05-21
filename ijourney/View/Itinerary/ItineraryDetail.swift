@@ -45,7 +45,9 @@ struct ItineraryDetail: View {
         
         if let startDate = itinerary.startDate, let endDate = itinerary.endDate {
           Text("\(startDate.formatted(date: .abbreviated, time: .omitted)) - \(endDate.formatted(date: .abbreviated, time: .omitted))")
-            .padding(.bottom, 20)
+            .padding(.bottom, 10)
+            .offset(y: -7)
+            .foregroundStyle(.secondary)
         }
         
         Text("Location")
