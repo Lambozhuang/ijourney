@@ -28,6 +28,7 @@
 		5BC1C3C42BF6BA56005CDD72 /* POICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1C3C32BF6BA56005CDD72 /* POICard.swift */; };
 		5BC1C3C62BF6BB45005CDD72 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1C3C52BF6BB45005CDD72 /* PointOfInterest.swift */; };
 		5BC1C3C82BF6C184005CDD72 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1C3C72BF6C184005CDD72 /* Day.swift */; };
+		5BC60E932BFD49B600B75A2A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC60E922BFD49B600B75A2A /* SampleData.swift */; };
 		5BCA9C072BFBCFE3000DBDE0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA9C062BFBCFE3000DBDE0 /* ProfileViewModel.swift */; };
 		5BCFB83D2BF7836600A93C9F /* ItineraryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB83C2BF7836600A93C9F /* ItineraryError.swift */; };
 		5BCFB8422BF79AD600A93C9F /* ItineraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB8412BF79AD600A93C9F /* ItineraryViewModel.swift */; };
@@ -93,6 +94,7 @@
 		5BC1C3C32BF6BA56005CDD72 /* POICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POICard.swift; sourceTree = "<group>"; };
 		5BC1C3C52BF6BB45005CDD72 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
 		5BC1C3C72BF6C184005CDD72 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		5BC60E922BFD49B600B75A2A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		5BCA9C062BFBCFE3000DBDE0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		5BCFB83C2BF7836600A93C9F /* ItineraryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryError.swift; sourceTree = "<group>"; };
 		5BCFB8412BF79AD600A93C9F /* ItineraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewModel.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				5B18D3932BE2D9F000C9827B /* Preview Assets.xcassets */,
+				5BC60E922BFD49B600B75A2A /* SampleData.swift */,
 				5BCFB8532BF7ADCF00A93C9F /* TestNetworkService.swift */,
 				5B24F66E2BFBF71D0006AD68 /* example-response-1.json */,
 				5B3ACBE92BFCFAD400E94B45 /* example-response-2.json */,
@@ -461,6 +464,7 @@
 				5BF470E42BF685820012CD72 /* CityList.swift in Sources */,
 				5BC1C3C82BF6C184005CDD72 /* Day.swift in Sources */,
 				5BC1C3C42BF6BA56005CDD72 /* POICard.swift in Sources */,
+				5BC60E932BFD49B600B75A2A /* SampleData.swift in Sources */,
 				5BCFB85C2BF7BB1A00A93C9F /* GICountryListView.swift in Sources */,
 				5BC1C3C22BF6B87F005CDD72 /* POIList.swift in Sources */,
 				5BCFB8652BF8071B00A93C9F /* GICityListView.swift in Sources */,

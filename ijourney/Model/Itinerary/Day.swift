@@ -27,9 +27,4 @@ struct Day: Identifiable, Codable {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     self.pointOfInterestList = try container.decode([PointOfInterest].self, forKey: .pointOfInterestList)
   }
-  
-  static let sampleData = Day(dayNumber: 1, pointOfInterestList: [
-    PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
-    PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
-  ])
 }

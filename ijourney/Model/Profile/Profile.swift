@@ -35,7 +35,7 @@ struct Interests: Equatable {
   
   subscript(interestType: InterestType) -> InterestLevel {
     get {
-      return interestMap[interestType] ?? .medium // should not happen as all interest types are initialized
+      return interestMap[interestType] ?? .medium
     }
     set {
       interestMap[interestType] = newValue
@@ -87,7 +87,7 @@ enum MajorLanguage: String, CaseIterable, Identifiable {
   case arabic = "ar"
   case portuguese = "pt"
   case hindi = "hi"
-  case none // This represents no selection
+  case none
   
   var id: String { self.rawValue }
   

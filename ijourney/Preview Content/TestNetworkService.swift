@@ -9,7 +9,7 @@ import Foundation
 
 class TestNetworkService: NetworkService {
   func fetchData(with request: URLRequest) async throws -> Data {
-    try await Task.sleep(nanoseconds: UInt64.random(in: 10_000_000_000...10_500_000_000))
+    try await Task.sleep(nanoseconds: UInt64.random(in: 1_000_000_000...1_500_000_000))
     guard let url = Bundle.main.url(forResource: "example-response-2", withExtension: "json") else {
       throw ItineraryError.networkError
     }

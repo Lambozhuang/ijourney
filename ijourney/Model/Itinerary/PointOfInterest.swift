@@ -54,9 +54,6 @@ struct PointOfInterest: Identifiable, Hashable, Codable {
     self.description = description
     
   }
-  
-  static let sampleData = PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0)
-  
 }
 
 enum InterestType: String, Codable, CaseIterable {

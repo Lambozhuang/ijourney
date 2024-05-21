@@ -43,23 +43,4 @@ struct Itinerary: Identifiable, Codable {
     self.days = try container.decode([Day].self, forKey: .days)
   }
   
-  static let sampleData: [Itinerary] = [
-    Itinerary(cityName: "Rome", countryName: "Italy", days: [
-      Day(dayNumber: 1, pointOfInterestList: [
-        PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
-        PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
-      ]),
-      Day(dayNumber: 2, pointOfInterestList: [
-        PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
-        PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
-      ])
-    ]),
-    Itinerary(cityName: "Athens", countryName: "Greece", days: [
-      Day(dayNumber: 1, pointOfInterestList: [
-        PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
-        PointOfInterest(name: "Colosseum", imageURL: nil, type: .historical, latitude: 0, longitude: 0),
-      ])
-    ])
-  ]
-  
 }
