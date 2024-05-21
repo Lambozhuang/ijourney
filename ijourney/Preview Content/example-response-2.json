@@ -1,0 +1,64 @@
+{
+  "choices": [
+    {
+      "content_filter_results": {
+        "hate": {
+          "filtered": false,
+          "severity": "safe"
+        },
+        "self_harm": {
+          "filtered": false,
+          "severity": "safe"
+        },
+        "sexual": {
+          "filtered": false,
+          "severity": "safe"
+        },
+        "violence": {
+          "filtered": false,
+          "severity": "safe"
+        }
+      },
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "{\n  \"city_name\": \"Paris\",\n  \"country_name\": \"France\",\n  \"itinerary_list\": [\n    {\n      \"poi_list\": [\n        {\n          \"name\": \"Eiffel Tower\",\n          \"type\": \"Historical\",\n          \"description\": \"Iconic landmark constructed in 1889, offering panoramic views of Paris.\"\n        },\n        {\n          \"name\": \"The Louvre Museum\",\n          \"type\": \"Cultural\",\n          \"description\": \"The world's largest art museum and a historic monument, home to thousands of works from various civilizations and eras.\"\n        }\n      ]\n    },\n    {\n      \"poi_list\": [\n        {\n          \"name\": \"Notre-Dame Cathedral\",\n          \"type\": \"Historical\",\n          \"description\": \"A medieval Catholic cathedral on the Île de la Cité in the 4th arrondissement and example of French Gothic architecture.\"\n        },\n        {\n          \"name\": \"Palais Garnier\",\n          \"type\": \"Cultural\",\n          \"description\": \"19th-century opera house commissioned by Emperor Napoleon III and a masterpiece filled with elaborate art and opulent architecture.\"\n        }\n      ]\n    },\n    {\n      \"poi_list\": [\n        {\n          \"name\": \"Sainte-Chapelle\",\n          \"type\": \"Historical\",\n          \"description\": \"A royal chapel within the medieval Palais de la Cité, featuring some of the finest examples of stained-glass windows in the world.\"\n        },\n        {\n          \"name\": \"Musée d'Orsay\",\n          \"type\": \"Cultural\",\n          \"description\": \"Art museum housed in a Beaux-Arts railway station, built between 1898 and 1900, well-known for its extensive collection of impressionist masterpieces.\"\n        }\n      ]\n    },\n    {\n      \"poi_list\": [\n        {\n          \"name\": \"Montmartre\",\n          \"type\": \"Cultural\",\n          \"description\": \"A historic and cultural neighborhood crowned by the 19th-century Basilica of the Sacré-Coeur.\"\n        },\n        {\n          \"name\": \"Versailles Palace\",\n          \"type\": \"Historical\",\n          \"description\": \"A palace built in the 17th century for Louis XIV and a symbol of the absolute monarchy of the Ancien Régime.\"\n        }\n      ]\n    }\n  ]\n}",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1716307738,
+  "id": "chatcmpl-9RMKoS5fr6hL8Ig7Nk0UtYeZEgoil",
+  "model": "gpt-4-turbo-2024-04-09",
+  "object": "chat.completion",
+  "prompt_filter_results": [
+    {
+      "prompt_index": 0,
+      "content_filter_results": {
+        "hate": {
+          "filtered": false,
+          "severity": "safe"
+        },
+        "self_harm": {
+          "filtered": false,
+          "severity": "safe"
+        },
+        "sexual": {
+          "filtered": false,
+          "severity": "safe"
+        },
+        "violence": {
+          "filtered": false,
+          "severity": "safe"
+        }
+      }
+    }
+  ],
+  "system_fingerprint": "fp_f5ce1e47b6",
+  "usage": {
+    "completion_tokens": 491,
+    "prompt_tokens": 309,
+    "total_tokens": 800
+  }
+}

@@ -34,6 +34,6 @@ struct ContentView: View {
 
 #Preview {
   ContentView()
-    .environmentObject(ItineraryViewModel(client: ItineraryClient(networkService: TestNetworkService())))
+    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService())))
     .tint(.green)
 }

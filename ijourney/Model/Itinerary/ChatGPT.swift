@@ -7,15 +7,18 @@
 
 import Foundation
 
-struct ChatGPTRequest: Codable {
-  let prompt: String
-  let max_tokens: Int
-  let temperature: Double
+struct ChatMessage: Codable {
+  let role: String
+  let content: String
 }
 
-struct ChatGPTResponse: Codable {
+struct ChatRequest: Codable {
+  let messages: [ChatMessage]
+}
+
+struct ChatResponse: Codable {
   struct Choice: Codable {
-    let text: String
+    let message: ChatMessage
   }
   let choices: [Choice]
 }

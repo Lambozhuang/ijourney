@@ -39,22 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "26EA0588-ED7A-44EA-BC3B-DE8AE7F76FA3"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ijourneyTests/ijourneyTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "testClientDoesFetchNewItineraryData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "16BABEDB-8A9F-4AF5-8C34-641483A743EA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -71,15 +55,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "28595736-18DF-4E75-9E68-35E85F6AD5A5"
+            uuid = "3D032588-DB4D-4D9D-BCA1-DCE35309E956"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ijourney/Service/ItineraryClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "fetchItinerary(userPrompt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -87,16 +71,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "360013AD-BDEB-4547-B682-20183B189A87"
-            shouldBeEnabled = "Yes"
+            uuid = "90EDB5F4-66C7-458E-97AB-8D080A749964"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ijourney/Model/Itinerary/ItineraryViewModel.swift"
+            filePath = "ijourneyTests/ItineraryServiceIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "composeUserPrompt(city:startDate:endDate:interests:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "testFetchItinerarySuccess()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

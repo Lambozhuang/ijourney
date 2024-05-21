@@ -16,7 +16,9 @@ struct GenerateItineraryView: View {
   
   @State private var showDiscardAlert = false
   @State private var showEditInterestLevel = false
-  @State private var isLoading = false
+  @State private var navigateToNewItineraryView = false
+  
+  @State private var itineraryTask: Task<Void, Never>? = nil
   
   @State private var startDate: Date = .now {
     didSet {
@@ -65,7 +67,7 @@ struct GenerateItineraryView: View {
           Text("Additional Information")
         }
       }
-      .disabled(isLoading)
+      .disabled(itineraryViewModel.isLoadingNewItinerary)
       .navigationTitle("Generate Itinerary")
       .navigationBarTitleDisplayMode(.large)
       .toolbar {
@@ -75,14 +77,14 @@ struct GenerateItineraryView: View {
           }
         }
         ToolbarItem(placement: .confirmationAction) {
-          if isLoading {
-            ProgressView()
-          } else {
-            Button("Create") {
-              createItinerary()
-            }
+          Button("Create") {
+            createItinerary()
           }
+          .disabled(itineraryViewModel.isLoadingNewItinerary)
         }
+      }
+      .navigationDestination(isPresented: $navigateToNewItineraryView) {
+        NewItineraryView(userPrompt: userPrompt)
       }
     }
     .confirmationDialog("Are you sure?", isPresented: $showDiscardAlert) {
@@ -97,18 +99,14 @@ struct GenerateItineraryView: View {
   
   private func createItinerary() {
     userPrompt = itineraryViewModel.composeUserPrompt(city: city, startDate: startDate, endDate: endDate, interests: profileViewModel.profile.interests)
-    itineraryViewModel.showGenerateItinerarySheet1 = false
-    itineraryViewModel.showGenerateItinerarySheet2 = false
-    isLoading = true
-    Task {
-      await itineraryViewModel.generateItinerary(userPrompt: userPrompt)
-      isLoading = false
-    }
+    itineraryViewModel.isLoadingNewItinerary = true
+    navigateToNewItineraryView = true
   }
 }
 
 #Preview {
   GenerateItineraryView(city: City(name: "Paris", countryName: "France"))
     .environmentObject(ProfileViewModel())
+    .environmentObject(ItineraryViewModel())
 }
  

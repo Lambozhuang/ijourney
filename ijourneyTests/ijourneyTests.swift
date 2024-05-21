@@ -25,12 +25,4 @@ final class ijourneyTests: XCTestCase {
     XCTAssertEqual(decoded.days[0].pointOfInterestList.count, 3)
   }
   
-  func testClientDoesFetchNewItineraryData() async throws {
-    let networkService = TestNetworkService()
-    let client = ItineraryClient(networkService: networkService)
-    let itinerary = try await client.fetchItinerary(userPrompt: "")
-    
-    XCTAssertEqual(itinerary.days.count, 3)
-  }
-
 }
