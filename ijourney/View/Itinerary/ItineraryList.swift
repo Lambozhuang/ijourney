@@ -47,9 +47,6 @@ struct ItineraryList: View {
         }
       }
     }
-    .task {
-      await itineraryViewModel.loadSampleData()
-    }
     .sheet(isPresented: $itineraryViewModel.showGenerateItinerarySheet1) {
       GICountryListView()
     }
