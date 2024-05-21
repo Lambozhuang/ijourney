@@ -11,12 +11,13 @@ struct NewItineraryView: View {
   
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
 
-  @State private var resultText: String = ""
   @State private var itinerary = Itinerary()
-  
   @State private var itineraryTask: Task<Void, Never>? = nil
+  @State private var errorMessage: String? = nil
 
   let userPrompt: String
+  let startDate: Date
+  let endDate: Date
   
   var body: some View {
     NavigationStack {
@@ -25,6 +26,9 @@ struct NewItineraryView: View {
           ProgressView("Generating Itinerary...")
             .progressViewStyle(CircularProgressViewStyle())
             .padding()
+        } else if let errorMessage {
+          Text(errorMessage)
+            .padding()
         } else {
           ItineraryDetail(isPreview: true, itinerary: itinerary)
         }
@@ -32,22 +36,22 @@ struct NewItineraryView: View {
       .navigationBarTitleDisplayMode(.inline)
       .navigationBarBackButtonHidden()
       .toolbar {
-        if itineraryViewModel.isLoadingNewItinerary {
+        if !itineraryViewModel.isLoadingNewItinerary || errorMessage != nil {
           ToolbarItem(placement: .cancellationAction) {
-            Button("Cancel") {
-              itineraryTask?.cancel()
-              dismissAll()
-            }
-          }
-        } else {
-          ToolbarItem(placement: .cancellationAction) {
-            Button("Discard", role: .destructive) {
+            Button("Cancel", role: .destructive) {
               dismissAll()
             }
           }
           ToolbarItem(placement: .confirmationAction) {
             Button("Add") {
               itineraryViewModel.addItinerary(itinerary: itinerary)
+              dismissAll()
+            }
+          }
+        } else {
+          ToolbarItem(placement: .cancellationAction) {
+            Button("Cancel") {
+              itineraryTask?.cancel()
               dismissAll()
             }
           }
@@ -63,12 +67,19 @@ struct NewItineraryView: View {
   
   private func generateItinerary() async {
     do {
-      let itinerary = try await itineraryViewModel.service.fetchItinerary(userPrompt: userPrompt)
+      var itinerary = try await itineraryViewModel.service.fetchItinerary(userPrompt: userPrompt)
+      itinerary.startDate = startDate
+      itinerary.endDate = endDate
       self.itinerary = itinerary
-      self.itineraryViewModel.isLoadingNewItinerary = false
+      withAnimation {
+        self.itineraryViewModel.isLoadingNewItinerary = false
+      }
     } catch {
-      self.resultText = "Failed to generate itinerary: \(error.localizedDescription)"
-      self.itineraryViewModel.isLoadingNewItinerary = false
+      self.errorMessage = "Failed to generate itinerary: \(error.localizedDescription)"
+      print(errorMessage!)
+      withAnimation {
+        self.itineraryViewModel.isLoadingNewItinerary = false
+      }
     }
   }
   
@@ -83,7 +94,7 @@ struct NewItineraryView: View {
   struct Preview: View {
     @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService()))
     var body: some View {
-      NewItineraryView(userPrompt: "")
+      NewItineraryView(userPrompt: "", startDate: .now, endDate: .now)
         .environmentObject(itineraryViewModel)
         .onAppear {
           itineraryViewModel.isLoadingNewItinerary = true

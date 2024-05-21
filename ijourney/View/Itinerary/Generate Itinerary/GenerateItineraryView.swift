@@ -18,8 +18,6 @@ struct GenerateItineraryView: View {
   @State private var showEditInterestLevel = false
   @State private var navigateToNewItineraryView = false
   
-  @State private var itineraryTask: Task<Void, Never>? = nil
-  
   @State private var startDate: Date = .now {
     didSet {
       if endDate < Calendar.current.date(byAdding: .day, value: 3, to: startDate)! {
@@ -84,7 +82,7 @@ struct GenerateItineraryView: View {
         }
       }
       .navigationDestination(isPresented: $navigateToNewItineraryView) {
-        NewItineraryView(userPrompt: userPrompt)
+        NewItineraryView(userPrompt: userPrompt, startDate: startDate, endDate: endDate)
       }
     }
     .confirmationDialog("Are you sure?", isPresented: $showDiscardAlert) {
@@ -99,7 +97,6 @@ struct GenerateItineraryView: View {
   
   private func createItinerary() {
     userPrompt = itineraryViewModel.composeUserPrompt(city: city, startDate: startDate, endDate: endDate, interests: profileViewModel.profile.interests)
-    print(userPrompt)
     itineraryViewModel.isLoadingNewItinerary = true
     navigateToNewItineraryView = true
   }
