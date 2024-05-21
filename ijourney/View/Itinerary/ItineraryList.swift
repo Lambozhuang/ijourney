@@ -13,8 +13,6 @@ struct ItineraryList: View {
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
   @EnvironmentObject var profileViewModel: ProfileViewModel
   
-  @State private var isPresentingCoountryList: Bool = false
-  
   var body: some View {
     NavigationStack {
       ZStack(alignment: .bottomTrailing) {
@@ -42,7 +40,7 @@ struct ItineraryList: View {
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
           Button {
-            isPresentingCoountryList = true
+            itineraryViewModel.showGenerateItinerarySheet1 = true
           } label: {
             Image(systemName: "plus")
           }
@@ -52,8 +50,8 @@ struct ItineraryList: View {
     .task {
       await itineraryViewModel.loadSampleData()
     }
-    .sheet(isPresented: $isPresentingCoountryList) {
-      GICountryListView(isPresentingSheet: $isPresentingCoountryList)
+    .sheet(isPresented: $itineraryViewModel.showGenerateItinerarySheet1) {
+      GICountryListView()
     }
     
   }

@@ -78,9 +78,25 @@
             filePath = "ijourney/Service/ItineraryClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "fetchItinerary(systemPrompt:userPrompt:)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "fetchItinerary(userPrompt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "360013AD-BDEB-4547-B682-20183B189A87"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ijourney/Model/Itinerary/ItineraryViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "composeUserPrompt(city:startDate:endDate:interests:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -28,7 +28,7 @@ final class ijourneyTests: XCTestCase {
   func testClientDoesFetchNewItineraryData() async throws {
     let networkService = TestNetworkService()
     let client = ItineraryClient(networkService: networkService)
-    let itinerary = try await client.fetchItinerary(systemPrompt: "", userPrompt: "")
+    let itinerary = try await client.fetchItinerary(userPrompt: "")
     
     XCTAssertEqual(itinerary.days.count, 3)
   }

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct GICityListView: View {
   
-  @Binding var isPresentingSheet: Bool
-  @State private var isPresentingGenerateItinerary: Bool = false
+  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  
   @State private var searchText = ""
   
   let country: Country
@@ -43,13 +43,13 @@ struct GICityListView: View {
     }
     .onChange(of: selectedCity) { oldValue, newValue in
       if newValue != nil {
-        isPresentingGenerateItinerary = true
+        itineraryViewModel.showGenerateItinerarySheet2 = true
       }
     }
     .task {
       await loadCities()
     }
-    .fullScreenCover(isPresented: $isPresentingGenerateItinerary) {
+    .fullScreenCover(isPresented: $itineraryViewModel.showGenerateItinerarySheet2) {
       if let city = selectedCity {
         GenerateItineraryView(city: city)
       }
@@ -78,5 +78,5 @@ struct GICityListView: View {
 }
 
 #Preview {
-  GICityListView(isPresentingSheet: .constant(true), country: Country(name: "France", abbreviation: "TC"))
+  GICityListView(country: Country(name: "France", abbreviation: "TC"))
 }

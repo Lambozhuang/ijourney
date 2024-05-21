@@ -17,7 +17,7 @@ class ProfileViewModel: ObservableObject {
   }
   
   static func sampleData() -> ProfileViewModel {
-    var vm = ProfileViewModel()
+    let vm = ProfileViewModel()
     vm.profile = Profile.sampleData
     return vm
   }

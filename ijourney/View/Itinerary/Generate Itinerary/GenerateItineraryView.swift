@@ -12,13 +12,23 @@ struct GenerateItineraryView: View {
   @Environment(\.dismiss) var dismiss
   
   @EnvironmentObject var profileViewModel: ProfileViewModel
+  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
   
   @State private var showDiscardAlert = false
   @State private var showEditInterestLevel = false
+  @State private var isLoading = false
   
-  @State private var startDate: Date = .now
-  @State private var endDate: Date = .now
-
+  @State private var startDate: Date = .now {
+    didSet {
+      if endDate < Calendar.current.date(byAdding: .day, value: 3, to: startDate)! {
+        endDate = Calendar.current.date(byAdding: .day, value: 3, to: startDate)!
+      }
+    }
+  }
+  @State private var endDate: Date = Calendar.current.date(byAdding: .day, value: 3, to: .now)!
+  
+  @State private var userPrompt = ""
+  
   var city: City
   
   var body: some View {
@@ -39,8 +49,8 @@ struct GenerateItineraryView: View {
         }
         
         Section {
-          DatePicker("Start Date", selection: $startDate, displayedComponents: [.date])
-          DatePicker("End Date", selection: $endDate, displayedComponents: [.date])
+          DatePicker("Start Date", selection: $startDate, in: Date()..., displayedComponents: [.date])
+          DatePicker("End Date", selection: $endDate, in: startDate...(Calendar.current.date(byAdding: .day, value: 6, to: startDate)!), displayedComponents: [.date])
         } header: {
           Text("Time")
         }
@@ -55,6 +65,7 @@ struct GenerateItineraryView: View {
           Text("Additional Information")
         }
       }
+      .disabled(isLoading)
       .navigationTitle("Generate Itinerary")
       .navigationBarTitleDisplayMode(.large)
       .toolbar {
@@ -64,8 +75,12 @@ struct GenerateItineraryView: View {
           }
         }
         ToolbarItem(placement: .confirmationAction) {
-          Button("Create") {
-            
+          if isLoading {
+            ProgressView()
+          } else {
+            Button("Create") {
+              createItinerary()
+            }
           }
         }
       }
@@ -79,9 +94,21 @@ struct GenerateItineraryView: View {
       EditInterestLevel(currentInterests: $profileViewModel.profile.interests)
     }
   }
+  
+  private func createItinerary() {
+    userPrompt = itineraryViewModel.composeUserPrompt(city: city, startDate: startDate, endDate: endDate, interests: profileViewModel.profile.interests)
+    itineraryViewModel.showGenerateItinerarySheet1 = false
+    itineraryViewModel.showGenerateItinerarySheet2 = false
+    isLoading = true
+    Task {
+      await itineraryViewModel.generateItinerary(userPrompt: userPrompt)
+      isLoading = false
+    }
+  }
 }
 
 #Preview {
   GenerateItineraryView(city: City(name: "Paris", countryName: "France"))
     .environmentObject(ProfileViewModel())
 }
+ 

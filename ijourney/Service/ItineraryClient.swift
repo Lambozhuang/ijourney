@@ -8,30 +8,22 @@
 import Foundation
 
 actor ItineraryClient {
-  
-//  var itinerary: Itinerary {
-//    get async throws {
-//      let data = try await downloader.fetchData(from: feedURL)
-//      let itinerary = try decoder.decode(Itinerary.self, from: data)
-//      return itinerary
-//    }
-//  }
-  
-  private let apiKey = "your-api-key-here"
-  private let endpoint = "https://mock-endpoint.azurewebsites.net/openai/deployments/chat/completions"
-  
+
   private let decoder = JSONDecoder()
   private let encoder = JSONEncoder()
   
-  private let feedURL = URL(string: "233")!
-  
   private let networkService: NetworkService
+  
+  private let endpoint = APIConfiguration.shared.endpoint
+  private let apiKey = APIConfiguration.shared.apiKey
+  private let systemPrompt = APIConfiguration.shared.systemPrompt
   
   init(networkService: NetworkService = URLSession.shared) {
     self.networkService = networkService
   }
   
-  func fetchItinerary(systemPrompt: String, userPrompt: String) async throws -> Itinerary {
+  func fetchItinerary(userPrompt: String) async throws -> Itinerary {
+    
     let url = URL(string: endpoint)!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
