@@ -106,7 +106,7 @@ struct GenerateItineraryView: View {
   struct Preview: View {
     @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService()))
     var body: some View {
-      GenerateItineraryView(city: City(name: "Paris", countryName: "France"))
+      GenerateItineraryView(city: City(name: "Paris", countryCode: "FR", countryName: "France"))
         .environmentObject(ProfileViewModel())
         .environmentObject(itineraryViewModel)
     }

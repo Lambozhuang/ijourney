@@ -64,7 +64,7 @@ struct GICityListView: View {
         guard let cityWrapper = decodedData.first(where: { $0.country == country.name }) else {
           return
         }
-        cities = cityWrapper.cities.map { City(name: $0, countryName: country.name) }
+        cities = cityWrapper.cities.map { City(name: $0, countryCode: country.abbreviation, countryName: country.name) }
       } catch {
         print("Error loading cities: \(error)")
       }

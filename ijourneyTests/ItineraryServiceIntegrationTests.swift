@@ -21,7 +21,7 @@ final class ItineraryServiceIntegrationTests: XCTestCase {
   
   func testFetchItinerarySuccess() async throws {
     
-    let sampleCity = City(name: "Paris", countryName: "France")
+    let sampleCity = City(name: "Paris", countryCode: "FR", countryName: "France")
     
     var sampleInterests = Interests()
     sampleInterests[.historical] = .high
