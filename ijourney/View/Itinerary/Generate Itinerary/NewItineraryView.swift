@@ -36,22 +36,19 @@ struct NewItineraryView: View {
           ToolbarItem(placement: .cancellationAction) {
             Button("Cancel") {
               itineraryTask?.cancel()
-              itineraryViewModel.showGenerateItinerarySheet1 = false
-              itineraryViewModel.showGenerateItinerarySheet1 = false
+              dismissAll()
             }
           }
         } else {
           ToolbarItem(placement: .cancellationAction) {
             Button("Discard", role: .destructive) {
-              itineraryViewModel.showGenerateItinerarySheet1 = false
-              itineraryViewModel.showGenerateItinerarySheet2 = false
+              dismissAll()
             }
           }
           ToolbarItem(placement: .confirmationAction) {
             Button("Add") {
               itineraryViewModel.addItinerary(itinerary: itinerary)
-              itineraryViewModel.showGenerateItinerarySheet1 = false
-              itineraryViewModel.showGenerateItinerarySheet1 = false
+              dismissAll()
             }
           }
         }
@@ -73,6 +70,11 @@ struct NewItineraryView: View {
       self.resultText = "Failed to generate itinerary: \(error.localizedDescription)"
       self.itineraryViewModel.isLoadingNewItinerary = false
     }
+  }
+  
+  private func dismissAll() {
+    itineraryViewModel.showGenerateItinerarySheet1 = false
+    itineraryViewModel.showGenerateItinerarySheet1 = false
   }
 
 }
