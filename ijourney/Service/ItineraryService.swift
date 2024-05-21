@@ -14,8 +14,8 @@ class ItineraryService {
   
   private let networkService: NetworkService
   
-  private let endpoint = APIConfiguration.shared.endpoint
-  private let apiKey = APIConfiguration.shared.apiKey
+  private let endpoint = APIConfiguration.shared.chatGPTEndpoint
+  private let apiKey = APIConfiguration.shared.chatGPTAPIKey
   private let systemPrompt = APIConfiguration.shared.systemPrompt
   
   private let timeoutInterval: TimeInterval = 120.0

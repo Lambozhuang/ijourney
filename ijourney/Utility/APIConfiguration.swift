@@ -10,18 +10,19 @@ import Foundation
 class APIConfiguration {
   static let shared = APIConfiguration()
   
-  private var config: [String: Any] = [:]
+  private var chatGPTConfiguration: [String: Any] = [:]
+  private var geoDBConfiguration: [String: Any] = [:]
   
   private init() {
-    loadConfig()
+    loadChatGPTConfiguration()
   }
   
-  private func loadConfig() {
-    if let url = Bundle.main.url(forResource: "API", withExtension: "plist") {
+  private func loadChatGPTConfiguration() {
+    if let url = Bundle.main.url(forResource: "AzureOpenAIAPI", withExtension: "plist") {
       do {
         let data = try Data(contentsOf: url)
         if let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any] {
-          config = plist
+          chatGPTConfiguration = plist
         }
       } catch {
         print("Error reading plist: \(error)")
@@ -29,15 +30,36 @@ class APIConfiguration {
     }
   }
   
-  var apiKey: String {
-    return config["APIKey"] as? String ?? ""
+  private func loadGeoDBConfiguration() {
+    if let url = Bundle.main.url(forResource: "GeoDBAPI", withExtension: "plist") {
+      do {
+        let data = try Data(contentsOf: url)
+        if let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any] {
+          geoDBConfiguration = plist
+        }
+      } catch {
+        print("Error reading plist: \(error)")
+      }
+    }
   }
   
-  var endpoint: String {
-    return config["Endpoint"] as? String ?? ""
+  var chatGPTAPIKey: String {
+    return chatGPTConfiguration["APIKey"] as? String ?? ""
+  }
+  
+  var chatGPTEndpoint: String {
+    return chatGPTConfiguration["Endpoint"] as? String ?? ""
   }
   
   var systemPrompt: String {
-    return config["SystemPrompt"] as? String ?? ""
+    return chatGPTConfiguration["SystemPrompt"] as? String ?? ""
+  }
+  
+  var geoDBAPIKey: String {
+    return geoDBConfiguration["APIKey"] as? String ?? ""
+  }
+  
+  var geoDBEndpoint: String {
+    return geoDBConfiguration["Endpoint"] as? String ?? ""
   }
 }
