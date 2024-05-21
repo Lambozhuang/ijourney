@@ -40,6 +40,10 @@ class ItineraryViewModel: ObservableObject {
     }
   }
   
+  func addItinerary(itinerary: Itinerary) {
+    self.itineraryList.append(itinerary)
+  }
+  
   func loadItinerary(from url: URL) throws -> Itinerary {
     do {
       let data = try Data(contentsOf: url)

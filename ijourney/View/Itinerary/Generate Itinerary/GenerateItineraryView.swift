@@ -99,14 +99,21 @@ struct GenerateItineraryView: View {
   
   private func createItinerary() {
     userPrompt = itineraryViewModel.composeUserPrompt(city: city, startDate: startDate, endDate: endDate, interests: profileViewModel.profile.interests)
+    print(userPrompt)
     itineraryViewModel.isLoadingNewItinerary = true
     navigateToNewItineraryView = true
   }
 }
 
 #Preview {
-  GenerateItineraryView(city: City(name: "Paris", countryName: "France"))
-    .environmentObject(ProfileViewModel())
-    .environmentObject(ItineraryViewModel())
+  struct Preview: View {
+    @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService()))
+    var body: some View {
+      GenerateItineraryView(city: City(name: "Paris", countryName: "France"))
+        .environmentObject(ProfileViewModel())
+        .environmentObject(itineraryViewModel)
+    }
+  }
+  return Preview()
 }
  

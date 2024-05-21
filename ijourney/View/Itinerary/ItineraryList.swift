@@ -23,7 +23,7 @@ struct ItineraryList: View {
               ItineraryCard(itinerary: itinerary)
               
               NavigationLink {
-                ItineraryDetail(itinerary: itinerary)
+                ItineraryDetail(isPreview: false, itinerary: itinerary)
               } label: {
                 EmptyView()
               }
@@ -58,7 +58,14 @@ struct ItineraryList: View {
 }
 
 #Preview {
-  ItineraryList()
-    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService())))
-    .tint(.green)
+  struct Preview: View {
+    @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService()))
+    var body: some View {
+      ItineraryList()
+        .environmentObject(ProfileViewModel())
+        .environmentObject(itineraryViewModel)
+        .tint(.green)
+    }
+  }
+  return Preview()
 }

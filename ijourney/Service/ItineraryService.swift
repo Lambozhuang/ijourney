@@ -32,9 +32,8 @@ class ItineraryService {
     
     var interestDescriptions = [String]()
     for interest in InterestType.allCases {
-      if let level = interests[interest], level != .veryLow {
-        interestDescriptions.append("\(interest.rawValue): \(level.rawValue)")
-      }
+      let level = interests[interest]
+      interestDescriptions.append("\(interest.rawValue): \(level.rawValue)")
     }
     
     let interestString = interestDescriptions.joined(separator: ",\n        ")

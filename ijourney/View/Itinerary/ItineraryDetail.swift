@@ -10,6 +10,7 @@ import MapKit
 import Glur
 
 struct ItineraryDetail: View {
+  var isPreview: Bool
   var itinerary: Itinerary
   var body: some View {
     
@@ -83,21 +84,22 @@ struct ItineraryDetail: View {
     .ignoresSafeArea(edges: .top)
     .toolbar {
       ToolbarItem {
-        Menu {
-          Button("Delete Itinerary", role: .destructive) {
-            
+        if !isPreview {
+          Menu {
+            Button("Delete Itinerary", role: .destructive) {
+              
+            }
+          } label: {
+            Image(systemName: "ellipsis.circle")
           }
-        } label: {
-          Image(systemName: "ellipsis.circle")
         }
       }
     }
-    
   }
 }
 
 
 
 #Preview {
-  ItineraryDetail(itinerary: Itinerary.sampleData[0])
+  ItineraryDetail(isPreview: false, itinerary: Itinerary.sampleData[0])
 }

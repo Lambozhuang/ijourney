@@ -73,7 +73,7 @@ struct EditInterestLevel: View {
     .onAppear {
       newInterests = currentInterests
       InterestType.allCases.forEach {
-        sliderValues[$0] = currentInterests[$0]?.value ?? 2
+        sliderValues[$0] = currentInterests[$0].value
       }
     }
     .interactiveDismissDisabled(isChanged)

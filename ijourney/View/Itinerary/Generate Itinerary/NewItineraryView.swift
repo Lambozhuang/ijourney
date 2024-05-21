@@ -12,24 +12,53 @@ struct NewItineraryView: View {
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
 
   @State private var resultText: String = ""
+  @State private var itinerary = Itinerary()
   
+  @State private var itineraryTask: Task<Void, Never>? = nil
+
   let userPrompt: String
   
   var body: some View {
-    VStack {
-      if itineraryViewModel.isLoadingNewItinerary {
-        ProgressView("Generating Itinerary...")
-          .progressViewStyle(CircularProgressViewStyle())
-          .padding()
-      } else {
-        ScrollView {
-          Text(resultText)
+    NavigationStack {
+      VStack {
+        if itineraryViewModel.isLoadingNewItinerary {
+          ProgressView("Generating Itinerary...")
+            .progressViewStyle(CircularProgressViewStyle())
             .padding()
+        } else {
+          ItineraryDetail(isPreview: true, itinerary: itinerary)
+        }
+      }
+      .navigationBarTitleDisplayMode(.inline)
+      .navigationBarBackButtonHidden()
+      .toolbar {
+        if itineraryViewModel.isLoadingNewItinerary {
+          ToolbarItem(placement: .cancellationAction) {
+            Button("Cancel") {
+              itineraryTask?.cancel()
+              itineraryViewModel.showGenerateItinerarySheet1 = false
+              itineraryViewModel.showGenerateItinerarySheet1 = false
+            }
+          }
+        } else {
+          ToolbarItem(placement: .cancellationAction) {
+            Button("Discard", role: .destructive) {
+              itineraryViewModel.showGenerateItinerarySheet1 = false
+              itineraryViewModel.showGenerateItinerarySheet2 = false
+            }
+          }
+          ToolbarItem(placement: .confirmationAction) {
+            Button("Add") {
+              itineraryViewModel.addItinerary(itinerary: itinerary)
+              itineraryViewModel.showGenerateItinerarySheet1 = false
+              itineraryViewModel.showGenerateItinerarySheet1 = false
+            }
+          }
         }
       }
     }
     .onAppear {
-      Task {
+      itineraryTask = Task {
         await generateItinerary()
       }
     }
@@ -38,29 +67,26 @@ struct NewItineraryView: View {
   private func generateItinerary() async {
     do {
       let itinerary = try await itineraryViewModel.service.fetchItinerary(userPrompt: userPrompt)
-      let itineraryDescription = itineraryDescription(itinerary)
-      DispatchQueue.main.async {
-        self.resultText = itineraryDescription
-        self.itineraryViewModel.isLoadingNewItinerary = false
-      }
+      self.itinerary = itinerary
+      self.itineraryViewModel.isLoadingNewItinerary = false
     } catch {
-      DispatchQueue.main.async {
-        self.resultText = "Failed to generate itinerary: \(error.localizedDescription)"
-        self.itineraryViewModel.isLoadingNewItinerary = false
-      }
+      self.resultText = "Failed to generate itinerary: \(error.localizedDescription)"
+      self.itineraryViewModel.isLoadingNewItinerary = false
     }
   }
-  
-  private func itineraryDescription(_ itinerary: Itinerary) -> String {
-    var description = "Trip Plan:\n"
-    description += "Target Country: \(itinerary.countryName ?? "None")\n"
-    description += "Target City: \(itinerary.cityName ?? "None")\n"
-    description += "Itinerary Length: \(itinerary.days.count) Days\n"
-    description += "Personal Interests:\n"
-    return description
-  }
+
 }
 
 #Preview {
-  NewItineraryView(userPrompt: "")
+  struct Preview: View {
+    @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService()))
+    var body: some View {
+      NewItineraryView(userPrompt: "")
+        .environmentObject(itineraryViewModel)
+        .onAppear {
+          itineraryViewModel.isLoadingNewItinerary = true
+        }
+    }
+  }
+  return Preview()
 }

@@ -29,15 +29,21 @@ struct Profile: Equatable {
 }
 
 struct Interests: Equatable {
-  private var interestMap: [InterestType: InterestLevel] = [:]
+  private var interestMap: [InterestType: InterestLevel] = InterestType.allCases.reduce(into: [:]) { result, interestType in
+    result[interestType] = .medium
+  }
   
-  subscript(interestType: InterestType) -> InterestLevel? {
+  subscript(interestType: InterestType) -> InterestLevel {
     get {
-      return interestMap[interestType]
+      return interestMap[interestType] ?? .medium // should not happen as all interest types are initialized
     }
     set {
       interestMap[interestType] = newValue
     }
+  }
+  
+  static func ==(lhs: Interests, rhs: Interests) -> Bool {
+    return lhs.interestMap == rhs.interestMap
   }
 }
 
