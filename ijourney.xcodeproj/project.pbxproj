@@ -56,13 +56,13 @@
 		5BCFB86D2BF8ECAC00A93C9F /* example-itinerary-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BCFB86B2BF8ECAB00A93C9F /* example-itinerary-1.json */; };
 		5BCFB86E2BF8EEB100A93C9F /* example-itinerary-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BCFB86B2BF8ECAB00A93C9F /* example-itinerary-1.json */; };
 		5BCFB8702BF95C4700A93C9F /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB86F2BF95C4700A93C9F /* AboutView.swift */; };
+		5BD2DDD12BFD836D00817982 /* Double+clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2DDD02BFD836D00817982 /* Double+clamped.swift */; };
 		5BF470DB2BF677F30012CD72 /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF470DA2BF677F30012CD72 /* Glur */; };
 		5BF470E02BF684350012CD72 /* CityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470DF2BF684350012CD72 /* CityDetail.swift */; };
 		5BF470E22BF6854C0012CD72 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470E12BF6854C0012CD72 /* ContentView.swift */; };
 		5BF470E42BF685820012CD72 /* CityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470E32BF685820012CD72 /* CityList.swift */; };
 		5BF470E62BF6858B0012CD72 /* CityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470E52BF6858B0012CD72 /* CityCard.swift */; };
 		5BF470E82BF6859B0012CD72 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470E72BF6859B0012CD72 /* ProfileView.swift */; };
-		5BF470ED2BF6870B0012CD72 /* Color+AccentColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470EC2BF6870B0012CD72 /* Color+AccentColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,12 +127,12 @@
 		5BCFB86A2BF8ECAB00A93C9F /* example-itinerary-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "example-itinerary-2.json"; sourceTree = "<group>"; };
 		5BCFB86B2BF8ECAB00A93C9F /* example-itinerary-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "example-itinerary-1.json"; sourceTree = "<group>"; };
 		5BCFB86F2BF95C4700A93C9F /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		5BD2DDD02BFD836D00817982 /* Double+clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+clamped.swift"; sourceTree = "<group>"; };
 		5BF470DF2BF684350012CD72 /* CityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetail.swift; sourceTree = "<group>"; };
 		5BF470E12BF6854C0012CD72 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BF470E32BF685820012CD72 /* CityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
 		5BF470E52BF6858B0012CD72 /* CityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCard.swift; sourceTree = "<group>"; };
 		5BF470E72BF6859B0012CD72 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		5BF470EC2BF6870B0012CD72 /* Color+AccentColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+AccentColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				5B24F6782BFC173D0006AD68 /* APIConfiguration.swift */,
-				5BF470EC2BF6870B0012CD72 /* Color+AccentColor.swift */,
+				5BD2DDD02BFD836D00817982 /* Double+clamped.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -495,8 +495,8 @@
 				5BC60E972BFD591A00B75A2A /* GeoDB.swift in Sources */,
 				5BF470E22BF6854C0012CD72 /* ContentView.swift in Sources */,
 				5B5D7A1A2BFBE83900241067 /* ChatGPT.swift in Sources */,
+				5BD2DDD12BFD836D00817982 /* Double+clamped.swift in Sources */,
 				5BC1C3C62BF6BB45005CDD72 /* PointOfInterest.swift in Sources */,
-				5BF470ED2BF6870B0012CD72 /* Color+AccentColor.swift in Sources */,
 				5BCA9C072BFBCFE3000DBDE0 /* ProfileViewModel.swift in Sources */,
 				5B24F6792BFC173D0006AD68 /* APIConfiguration.swift in Sources */,
 				5B18D38F2BE2D9EF00C9827B /* Itinerary.swift in Sources */,
