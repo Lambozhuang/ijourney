@@ -15,6 +15,7 @@ class APIConfiguration {
   
   private init() {
     loadChatGPTConfiguration()
+    loadGeoDBConfiguration()
   }
   
   private func loadChatGPTConfiguration() {
@@ -43,23 +44,23 @@ class APIConfiguration {
     }
   }
   
-  var chatGPTAPIKey: String {
-    return chatGPTConfiguration["APIKey"] as? String ?? ""
+  var chatGPTAPIKey: String? {
+    return chatGPTConfiguration["APIKey"] as? String
   }
   
-  var chatGPTEndpoint: String {
-    return chatGPTConfiguration["Endpoint"] as? String ?? ""
+  var chatGPTEndpoint: String? {
+    return chatGPTConfiguration["Endpoint"] as? String
   }
   
-  var systemPrompt: String {
-    return chatGPTConfiguration["SystemPrompt"] as? String ?? ""
+  var systemPrompt: String? {
+    return chatGPTConfiguration["SystemPrompt"] as? String
   }
   
-  var geoDBAPIKey: String {
-    return geoDBConfiguration["APIKey"] as? String ?? ""
+  var geoDBAPIKey: String? {
+    return geoDBConfiguration["APIKey"] as? String
   }
   
-  var geoDBEndpoint: String {
-    return geoDBConfiguration["Endpoint"] as? String ?? ""
+  var geoDBEndpoint: String? {
+    return geoDBConfiguration["Endpoint"] as? String
   }
 }

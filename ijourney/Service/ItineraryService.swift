@@ -14,14 +14,22 @@ class ItineraryService {
   
   private let networkService: NetworkService
   
-  private let endpoint = APIConfiguration.shared.chatGPTEndpoint
-  private let apiKey = APIConfiguration.shared.chatGPTAPIKey
-  private let systemPrompt = APIConfiguration.shared.systemPrompt
+  private let endpoint: String
+  private let apiKey: String
+  private let systemPrompt: String
   
   private let timeoutInterval: TimeInterval = 120.0
   
   init(networkService: NetworkService = URLSession.shared) {
     self.networkService = networkService
+    guard let endpoint = APIConfiguration.shared.chatGPTEndpoint,
+          let apiKey = APIConfiguration.shared.chatGPTAPIKey,
+          let systemPrompt = APIConfiguration.shared.systemPrompt else {
+      fatalError("API not found")
+    }
+    self.endpoint = endpoint
+    self.apiKey = apiKey
+    self.systemPrompt = systemPrompt
   }
   
   func composeUserPrompt(city: City, startDate: Date, endDate: Date, interests: Interests) -> String {

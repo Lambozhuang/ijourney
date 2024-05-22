@@ -12,6 +12,7 @@ import Glur
 struct CityDetail: View {
   
   @State private var showCreateItinerary = false
+  @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion())
   
   var city: City
   
@@ -55,21 +56,27 @@ struct CityDetail: View {
       .padding(.bottom, 5)
       VStack(alignment: .leading) {
         
-        HStack(alignment: .firstTextBaseline) {
-          Text("Location")
-            .font(.title3)
-            .bold()
-          Spacer()
-          Button {
-            
-          } label: {
-            Text("View in Maps")
+        if let latitude = city.latitude, let longitude = city.longitude {
+          HStack(alignment: .firstTextBaseline) {
+            Text("Location")
+              .font(.title3)
+              .bold()
+            Spacer()
+            Button {
+              
+            } label: {
+              Text("View in Maps")
+            }
           }
+          
+          Map(position: $cameraPosition)
+            .frame(height: 250)
+            .clipShape(.rect(cornerRadius: 10))
+            .padding(.bottom, 30)
+            .onAppear {
+              cameraPosition = MapCameraPosition.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)))
+            }
         }
-        Map()
-          .frame(height: 250)
-          .clipShape(.rect(cornerRadius: 10))
-          .padding(.bottom, 30)
         
         Text("Description")
           .font(.title3)
@@ -90,5 +97,5 @@ struct CityDetail: View {
 }
 
 #Preview {
-  CityDetail(city: City.sampleData[0])
+  CityDetail(city: City.sampleData[1])
 }
