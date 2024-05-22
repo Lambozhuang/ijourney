@@ -11,7 +11,9 @@ import CoreImage.CIFilterBuiltins
 
 struct CityCard: View {
   
-  @State private var showCreateItinerary = false
+  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  @EnvironmentObject var cityViewModel: CityViewModel
+
   @State private var dominantColor: Color = Color(UIColor.systemFill)
   
   var city: City
@@ -32,19 +34,21 @@ struct CityCard: View {
           
           Menu {
             Button("Create Itinerary") {
-              showCreateItinerary = true
+              cityViewModel.selectedCity = city
+              itineraryViewModel.showGenerateItinerarySheet2 = true
             }
           } label: {
             Image(systemName: "ellipsis.circle")
               .font(.title2)
           }
+          .tint(.white)
         }
         .padding([.leading, .trailing])
         
         Image(city.name)
           .resizable()
           .scaledToFill()
-          .frame(width: (UIScreen.main.bounds.width - 70), height: 150)
+          .frame(width: (UIScreen.main.bounds.width - 65), height: 130)
           .clipShape(.rect(cornerRadius: 10))
           .onAppear {
             sampleColorFromImage(imageName: city.name)
@@ -52,7 +56,7 @@ struct CityCard: View {
       }
       
     }
-    .frame(width: (UIScreen.main.bounds.width - 40), height: 250)
+    .frame(width: (UIScreen.main.bounds.width - 40), height: 220)
     .clipShape(.rect(cornerRadius: 20))
     .background(
       GradientBackground(color: dominantColor)
@@ -60,10 +64,6 @@ struct CityCard: View {
         .clipShape(.rect(cornerRadius: 10))
         .shadow(radius: 7)
     )
-    .fullScreenCover(isPresented: $showCreateItinerary) {
-      GenerateItineraryView(city: city)
-    }
-    .tint(.white)
   }
   
   func sampleColorFromImage(imageName: String) {
@@ -113,4 +113,5 @@ struct GradientBackground: View {
 
 #Preview {
   CityCard(city: City.sampleData[0])
+    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService())))
 }

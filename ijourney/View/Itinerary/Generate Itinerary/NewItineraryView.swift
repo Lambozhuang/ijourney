@@ -10,10 +10,12 @@ import SwiftUI
 struct NewItineraryView: View {
   
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  @EnvironmentObject var cityViewModel: CityViewModel
 
   @State private var itinerary = Itinerary()
   @State private var itineraryTask: Task<Void, Never>? = nil
   @State private var errorMessage: String? = nil
+  @State private var showDiscardAlert = false
 
   let userPrompt: String
   let startDate: Date
@@ -39,7 +41,7 @@ struct NewItineraryView: View {
         if !itineraryViewModel.isLoadingNewItinerary || errorMessage != nil {
           ToolbarItem(placement: .cancellationAction) {
             Button("Cancel", role: .destructive) {
-              dismissAll()
+              showDiscardAlert = true
             }
           }
           ToolbarItem(placement: .confirmationAction) {
@@ -63,6 +65,12 @@ struct NewItineraryView: View {
         await generateItinerary()
       }
     }
+    .confirmationDialog("Are you sure?", isPresented: $showDiscardAlert) {
+      Button("Discard Itinerary", role: .destructive) {
+        cityViewModel.selectedCity = nil
+        dismissAll()
+      }
+    }
   }
   
   private func generateItinerary() async {
@@ -84,6 +92,7 @@ struct NewItineraryView: View {
   }
   
   private func dismissAll() {
+    cityViewModel.selectedCity = nil
     itineraryViewModel.showGenerateItinerarySheet1 = false
     itineraryViewModel.showGenerateItinerarySheet1 = false
   }
@@ -96,6 +105,7 @@ struct NewItineraryView: View {
     var body: some View {
       NewItineraryView(userPrompt: "", startDate: .now, endDate: .now)
         .environmentObject(itineraryViewModel)
+        .environmentObject(CityViewModel())
         .onAppear {
           itineraryViewModel.isLoadingNewItinerary = true
         }

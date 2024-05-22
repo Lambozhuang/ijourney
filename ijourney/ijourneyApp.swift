@@ -11,14 +11,16 @@ import SwiftData
 @main
 struct ijourneyApp: App {
   
-  @StateObject private var itineraryViewModel = ItineraryViewModel()
+  @StateObject private var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService()))
   @StateObject private var profileViewModel = ProfileViewModel()
+  @StateObject private var cityViewModel = CityViewModel()
   
   var body: some Scene {
     WindowGroup {
       ContentView()
         .environmentObject(itineraryViewModel)
         .environmentObject(profileViewModel)
+        .environmentObject(cityViewModel)
         .tint(.green)
     }
     

@@ -13,6 +13,7 @@ struct GenerateItineraryView: View {
   
   @EnvironmentObject var profileViewModel: ProfileViewModel
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  @EnvironmentObject var cityViewModel: CityViewModel
   
   @State private var showDiscardAlert = false
   @State private var showEditInterestLevel = false
@@ -68,6 +69,7 @@ struct GenerateItineraryView: View {
       .disabled(itineraryViewModel.isLoadingNewItinerary)
       .navigationTitle("Generate Itinerary")
       .navigationBarTitleDisplayMode(.large)
+      .listStyle(.insetGrouped)
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
           Button("Cancel", role: .cancel) {
@@ -86,7 +88,8 @@ struct GenerateItineraryView: View {
       }
     }
     .confirmationDialog("Are you sure?", isPresented: $showDiscardAlert) {
-      Button("Discard Changes", role: .destructive) {
+      Button("Discard Itinerary", role: .destructive) {
+        cityViewModel.selectedCity = nil
         dismiss()
       }
     }
@@ -109,6 +112,7 @@ struct GenerateItineraryView: View {
       GenerateItineraryView(city: City(name: "Paris", countryCode: "FR", countryName: "France"))
         .environmentObject(ProfileViewModel())
         .environmentObject(itineraryViewModel)
+        .environmentObject(CityViewModel())
     }
   }
   return Preview()

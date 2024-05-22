@@ -11,7 +11,8 @@ import Glur
 
 struct CityDetail: View {
   
-  @State private var showCreateItinerary = false
+  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  
   @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion())
   
   var city: City
@@ -37,12 +38,12 @@ struct CityDetail: View {
             .font(.system(.largeTitle, design: .serif))
             .fontWeight(.bold)
           Text(city.countryName)
-            .font(.body)
+            .foregroundStyle(.secondary)
             .padding(.leading, 10)
           Spacer()
           Menu {
             Button("Create Itinerary") {
-              showCreateItinerary = true
+              itineraryViewModel.showGenerateItinerarySheet2 = true
             }
           } label: {
             Image(systemName: "ellipsis.circle")
@@ -74,7 +75,7 @@ struct CityDetail: View {
             .clipShape(.rect(cornerRadius: 10))
             .padding(.bottom, 30)
             .onAppear {
-              cameraPosition = MapCameraPosition.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)))
+              cameraPosition = MapCameraPosition.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)))
             }
         }
         
@@ -90,7 +91,7 @@ struct CityDetail: View {
     .navigationBarTitleDisplayMode(.inline)
     .toolbarBackground(.automatic, for: .navigationBar)
     .ignoresSafeArea(edges: .top)
-    .fullScreenCover(isPresented: $showCreateItinerary) {
+    .fullScreenCover(isPresented: $itineraryViewModel.showGenerateItinerarySheet2) {
       GenerateItineraryView(city: city)
     }
   }
@@ -98,4 +99,5 @@ struct CityDetail: View {
 
 #Preview {
   CityDetail(city: City.sampleData[1])
+    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService())))
 }
