@@ -94,8 +94,8 @@
             filePath = "ijourney/View/Itinerary/Generate Itinerary/GenerateItineraryView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "createItinerary()"
             landmarkType = "7">
          </BreakpointContent>

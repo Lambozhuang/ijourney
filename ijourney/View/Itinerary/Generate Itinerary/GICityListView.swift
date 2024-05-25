@@ -31,6 +31,7 @@ struct GICityListView: View {
         ForEach(filteredCities) { city in
           Button {
             selectedCity = city
+            itineraryViewModel.showGenerateItinerarySheet2 = true
           } label: {
             Text(city.name)
           }
@@ -40,11 +41,6 @@ struct GICityListView: View {
       .navigationTitle("Choose a City")
       .navigationBarTitleDisplayMode(.large)
       .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-    }
-    .onChange(of: selectedCity) { oldValue, newValue in
-      if newValue != nil {
-        itineraryViewModel.showGenerateItinerarySheet2 = true
-      }
     }
     .task {
       await loadCities()
