@@ -33,17 +33,12 @@ struct CityList: View {
       }
       .navigationTitle("Explore Cities")
       .listStyle(.plain)
-      .fullScreenCover(isPresented: $itineraryViewModel.showGenerateItinerarySheet2) {
-        if let city = cityViewModel.selectedCity {
-          GenerateItineraryView(city: city)
-        }
-      }
     }
   }
 }
 
 #Preview {
   CityList(cities: City.sampleData)
-    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService())))
+    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService())))
     .environmentObject(CityViewModel())
 }

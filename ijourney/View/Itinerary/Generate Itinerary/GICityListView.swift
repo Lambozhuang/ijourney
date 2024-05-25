@@ -79,4 +79,5 @@ struct GICityListView: View {
 
 #Preview {
   GICityListView(country: Country(name: "France", abbreviation: "TC"))
+    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService())))
 }

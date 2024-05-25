@@ -56,7 +56,7 @@ struct ItineraryList: View {
 
 #Preview {
   struct Preview: View {
-    @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService()))
+    @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService()))
     var body: some View {
       ItineraryList()
         .environmentObject(ProfileViewModel())

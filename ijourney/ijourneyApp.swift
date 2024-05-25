@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct ijourneyApp: App {
   
-  @StateObject private var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService()))
+  @StateObject private var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService()))
   @StateObject private var profileViewModel = ProfileViewModel()
   @StateObject private var cityViewModel = CityViewModel()
   

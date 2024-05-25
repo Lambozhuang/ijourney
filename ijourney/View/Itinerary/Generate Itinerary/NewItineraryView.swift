@@ -41,7 +41,11 @@ struct NewItineraryView: View {
         if !itineraryViewModel.isLoadingNewItinerary || errorMessage != nil {
           ToolbarItem(placement: .cancellationAction) {
             Button("Cancel", role: .destructive) {
-              showDiscardAlert = true
+              if errorMessage == nil {
+                showDiscardAlert = true
+              } else {
+                dismissAll()
+              }
             }
           }
           ToolbarItem(placement: .confirmationAction) {
@@ -101,7 +105,7 @@ struct NewItineraryView: View {
 
 #Preview {
   struct Preview: View {
-    @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService()))
+    @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService()))
     var body: some View {
       NewItineraryView(userPrompt: "", startDate: .now, endDate: .now)
         .environmentObject(itineraryViewModel)

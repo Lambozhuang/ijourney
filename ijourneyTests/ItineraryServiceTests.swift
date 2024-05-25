@@ -11,7 +11,7 @@ import XCTest
 final class ItineraryServiceTests: XCTestCase {
 
   func testServiceDoesFetchNewItineraryData() async throws {
-    let networkService = TestNetworkService()
+    let networkService = TestItineraryNetworkService()
     let service = ItineraryService(networkService: networkService)
     let itinerary = try await service.fetchItinerary(userPrompt: "")
     

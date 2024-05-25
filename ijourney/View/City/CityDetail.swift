@@ -99,5 +99,5 @@ struct CityDetail: View {
 
 #Preview {
   CityDetail(city: City.sampleData[1])
-    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService())))
+    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService())))
 }

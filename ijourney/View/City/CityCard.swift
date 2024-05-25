@@ -11,7 +11,6 @@ import CoreImage.CIFilterBuiltins
 
 struct CityCard: View {
   
-  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
   @EnvironmentObject var cityViewModel: CityViewModel
 
   @State private var dominantColor: Color = Color(UIColor.systemFill)
@@ -31,17 +30,6 @@ struct CityCard: View {
           }
           
           Spacer()
-          
-          Menu {
-            Button("Create Itinerary") {
-              cityViewModel.selectedCity = city
-              itineraryViewModel.showGenerateItinerarySheet2 = true
-            }
-          } label: {
-            Image(systemName: "ellipsis.circle")
-              .font(.title2)
-          }
-          .tint(.white)
         }
         .padding([.leading, .trailing])
         
@@ -113,5 +101,4 @@ struct GradientBackground: View {
 
 #Preview {
   CityCard(city: City.sampleData[0])
-    .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestNetworkService())))
 }
