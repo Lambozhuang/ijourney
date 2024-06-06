@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct City: Identifiable, Codable, Equatable {
   let id = UUID()
@@ -16,6 +17,8 @@ struct City: Identifiable, Codable, Equatable {
   
   var latitude: Double?
   var longitude: Double?
+  
+  var image: Image?
   
   enum CodingKeys: String, CodingKey {
     case name
@@ -32,5 +35,9 @@ struct City: Identifiable, Codable, Equatable {
     self.description = description
     self.latitude = latitude
     self.longitude = longitude
+  }
+  
+  mutating func loadLocalImage() {
+    image = Image(name)
   }
 }

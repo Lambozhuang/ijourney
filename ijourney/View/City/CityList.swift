@@ -9,15 +9,12 @@ import SwiftUI
 
 struct CityList: View {
   
-  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
   @EnvironmentObject var cityViewModel: CityViewModel
-  
-  var cities: [City]
   
   var body: some View {
     NavigationStack {
       List {
-        ForEach(cities) { city in
+        ForEach(cityViewModel.featuredCities) { city in
           ZStack {
             CityCard(city: city)
             NavigationLink {
@@ -38,7 +35,8 @@ struct CityList: View {
 }
 
 #Preview {
-  CityList(cities: City.sampleData)
+  CityList()
     .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService())))
     .environmentObject(CityViewModel())
+    .environmentObject(NavigationState())
 }

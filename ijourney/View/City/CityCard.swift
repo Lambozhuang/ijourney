@@ -10,8 +10,6 @@ import CoreImage
 import CoreImage.CIFilterBuiltins
 
 struct CityCard: View {
-  
-  @EnvironmentObject var cityViewModel: CityViewModel
 
   @State private var dominantColor: Color = Color(UIColor.systemFill)
   
@@ -33,16 +31,23 @@ struct CityCard: View {
         }
         .padding([.leading, .trailing])
         
-        Image(city.name)
-          .resizable()
-          .scaledToFill()
-          .frame(width: (UIScreen.main.bounds.width - 65), height: 130)
-          .clipShape(.rect(cornerRadius: 10))
-          .onAppear {
-            sampleColorFromImage(imageName: city.name)
-          }
+        ZStack {
+          Rectangle()
+            .fill(.placeholder)
+            .clipShape(.rect(cornerRadius: 10))
+          Image(systemName: "photo")
+            .font(.system(size: 50))
+            .foregroundStyle(.secondary)
+          city.image?
+            .resizable()
+            .scaledToFill()
+        }
+        .frame(width: (UIScreen.main.bounds.width - 65), height: 130)
+        .clipShape(.rect(cornerRadius: 10))
       }
-      
+      .task {
+        await sampleColorFromImage(imageName: city.name)
+      }
     }
     .frame(width: (UIScreen.main.bounds.width - 40), height: 220)
     .clipShape(.rect(cornerRadius: 20))
@@ -54,7 +59,7 @@ struct CityCard: View {
     )
   }
   
-  func sampleColorFromImage(imageName: String) {
+  func sampleColorFromImage(imageName: String) async {
     guard let uiImage = UIImage(named: imageName) else { return }
     let ciImage = CIImage(image: uiImage)
     

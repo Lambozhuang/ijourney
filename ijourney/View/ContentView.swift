@@ -13,7 +13,7 @@ struct ContentView: View {
   
   var body: some View {
     TabView(selection: $navigationState.selectedTab) {
-      CityList(cities: City.sampleData)
+      CityList()
         .tabItem { 
           Image(systemName: "building.2.fill")
           Text("Explore")

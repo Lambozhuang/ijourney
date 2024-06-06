@@ -64,7 +64,7 @@ struct CityDetail: View {
               .bold()
             Spacer()
             Button {
-              
+              openInMaps(cityName: city.name, countryName: city.countryName)
             } label: {
               Text("View in Maps")
             }
@@ -95,9 +95,45 @@ struct CityDetail: View {
       GenerateItineraryView(city: city)
     }
   }
+  
+  private func openInMaps(cityName: String, countryName: String) {
+    let request = MKLocalSearch.Request()
+    request.naturalLanguageQuery = "\(cityName), \(countryName)"
+    
+    request.region = MKCoordinateRegion(MKMapRect.world)
+    
+    let search = MKLocalSearch(request: request)
+    search.start { response, error in
+      guard let response = response else {
+        print("MKLocalSearch response error")
+        return
+      }
+      
+      // Filter results to find the city with the exact name and country
+      let filteredItems = response.mapItems.filter { item in
+        print(item.placemark)
+        if let locality = item.placemark.locality,
+           let country = item.placemark.country {
+          return locality == cityName && country == countryName
+        }
+        return false
+      }
+      
+      guard let mapItem = filteredItems.first else {
+        print("No matching results for the city")
+        return
+      }
+      
+      mapItem.openInMaps(launchOptions: [
+        MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: mapItem.placemark.coordinate),
+        MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+      ])
+    }
+  }
 }
 
 #Preview {
   CityDetail(city: City.sampleData[1])
     .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService())))
+    .environmentObject(NavigationState())
 }
