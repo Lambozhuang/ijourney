@@ -57,7 +57,7 @@ struct ProfileView: View {
         
         Section {
           NavigationLink {
-            Text("About")
+            AboutView()
           } label: {
             Text("About")
           }

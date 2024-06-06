@@ -10,7 +10,7 @@ import Foundation
 @MainActor
 class ProfileViewModel: ObservableObject {
   
-  @Published var profile: Profile = Profile(name: "", birthday: .now)
+  @Published var profile: Profile = Profile(name: "Name", birthday: .now)
   
   init() {
     
