@@ -9,8 +9,11 @@ import SwiftUI
 
 struct NewItineraryView: View {
   
+  @Environment(\.dismiss) var dismiss
+  
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
   @EnvironmentObject var cityViewModel: CityViewModel
+  @EnvironmentObject var navigationState: NavigationState
 
   @State private var itinerary = Itinerary()
   @State private var itineraryTask: Task<Void, Never>? = nil
@@ -24,7 +27,7 @@ struct NewItineraryView: View {
   var body: some View {
     NavigationStack {
       VStack {
-        if itineraryViewModel.isLoadingNewItinerary {
+        if navigationState.isLoadingNewItinerary {
           ProgressView("Generating Itinerary...")
             .progressViewStyle(CircularProgressViewStyle())
             .padding()
@@ -38,27 +41,28 @@ struct NewItineraryView: View {
       .navigationBarTitleDisplayMode(.inline)
       .navigationBarBackButtonHidden()
       .toolbar {
-        if !itineraryViewModel.isLoadingNewItinerary || errorMessage != nil {
+        if !navigationState.isLoadingNewItinerary || errorMessage != nil {
           ToolbarItem(placement: .cancellationAction) {
             Button("Cancel", role: .destructive) {
               if errorMessage == nil {
                 showDiscardAlert = true
               } else {
-                dismissAll()
+                dismiss()
               }
             }
           }
           ToolbarItem(placement: .confirmationAction) {
             Button("Add") {
               itineraryViewModel.addItinerary(itinerary: itinerary)
-              dismissAll()
+              navigationState.selectedTab = .itinerary
+              navigationState.dismissAll()
             }
           }
         } else {
           ToolbarItem(placement: .cancellationAction) {
             Button("Cancel") {
               itineraryTask?.cancel()
-              dismissAll()
+              dismiss()
             }
           }
         }
@@ -71,8 +75,7 @@ struct NewItineraryView: View {
     }
     .confirmationDialog("Are you sure?", isPresented: $showDiscardAlert) {
       Button("Discard Itinerary", role: .destructive) {
-        cityViewModel.selectedCity = nil
-        dismissAll()
+        dismiss()
       }
     }
   }
@@ -84,34 +87,29 @@ struct NewItineraryView: View {
       itinerary.endDate = endDate
       self.itinerary = itinerary
       withAnimation {
-        self.itineraryViewModel.isLoadingNewItinerary = false
+        self.navigationState.isLoadingNewItinerary = false
       }
     } catch {
       self.errorMessage = "Failed to generate itinerary: \(error.localizedDescription)"
       print(errorMessage!)
       withAnimation {
-        self.itineraryViewModel.isLoadingNewItinerary = false
+        self.navigationState.isLoadingNewItinerary = false
       }
     }
   }
-  
-  private func dismissAll() {
-    cityViewModel.selectedCity = nil
-    itineraryViewModel.showGenerateItinerarySheet1 = false
-    itineraryViewModel.showGenerateItinerarySheet1 = false
-  }
-
 }
 
 #Preview {
   struct Preview: View {
     @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService()))
+    @StateObject var navigationState = NavigationState()
     var body: some View {
       NewItineraryView(userPrompt: "", startDate: .now, endDate: .now)
         .environmentObject(itineraryViewModel)
         .environmentObject(CityViewModel())
+        .environmentObject(navigationState)
         .onAppear {
-          itineraryViewModel.isLoadingNewItinerary = true
+          navigationState.isLoadingNewItinerary = true
         }
     }
   }

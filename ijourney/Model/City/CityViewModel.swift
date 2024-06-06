@@ -9,7 +9,12 @@ import Foundation
 
 @MainActor
 class CityViewModel: ObservableObject {
-  @Published var allCities: [City] = []
-  @Published var selectedCity: City? = nil
+  
+  let service: CityService
+  
+  init(service: CityService = CityService()) {
+    self.service = service
+  }
+  
   
 }

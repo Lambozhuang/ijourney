@@ -12,10 +12,6 @@ class ItineraryViewModel: ObservableObject {
   
   @Published var itineraryList: [Itinerary] = []
   
-  @Published var showGenerateItinerarySheet1 = false
-  @Published var showGenerateItinerarySheet2 = false
-  @Published var isLoadingNewItinerary = false
-  
   let service: ItineraryService
   
   init(service: ItineraryService = ItineraryService()) {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GICityListView: View {
   
-  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  @EnvironmentObject var navigationState: NavigationState
   
   @State private var searchText = ""
   
@@ -31,7 +31,7 @@ struct GICityListView: View {
         ForEach(filteredCities) { city in
           Button {
             selectedCity = city
-            itineraryViewModel.showGenerateItinerarySheet2 = true
+            navigationState.showGenerateItinerarySheet2 = true
           } label: {
             Text(city.name)
           }
@@ -45,7 +45,7 @@ struct GICityListView: View {
     .task {
       await loadCities()
     }
-    .fullScreenCover(isPresented: $itineraryViewModel.showGenerateItinerarySheet2) {
+    .fullScreenCover(isPresented: $navigationState.showGenerateItinerarySheet2) {
       if let city = selectedCity {
         GenerateItineraryView(city: city)
       }
@@ -76,4 +76,5 @@ struct GICityListView: View {
 #Preview {
   GICityListView(country: Country(name: "France", abbreviation: "TC"))
     .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService())))
+    .environmentObject(NavigationState())
 }

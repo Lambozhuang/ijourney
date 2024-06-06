@@ -12,6 +12,7 @@ struct ItineraryList: View {
   
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
   @EnvironmentObject var profileViewModel: ProfileViewModel
+  @EnvironmentObject var navigationState: NavigationState
   
   var body: some View {
     NavigationStack {
@@ -40,14 +41,14 @@ struct ItineraryList: View {
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
           Button {
-            itineraryViewModel.showGenerateItinerarySheet1 = true
+            navigationState.showGenerateItinerarySheet1 = true
           } label: {
             Image(systemName: "plus")
           }
         }
       }
     }
-    .sheet(isPresented: $itineraryViewModel.showGenerateItinerarySheet1) {
+    .sheet(isPresented: $navigationState.showGenerateItinerarySheet1) {
       GICountryListView()
     }
     
@@ -61,6 +62,7 @@ struct ItineraryList: View {
       ItineraryList()
         .environmentObject(ProfileViewModel())
         .environmentObject(itineraryViewModel)
+        .environmentObject(NavigationState())
         .tint(.green)
     }
   }

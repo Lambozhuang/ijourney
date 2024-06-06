@@ -11,7 +11,7 @@ import Glur
 
 struct CityDetail: View {
   
-  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  @EnvironmentObject var navigationState: NavigationState
   
   @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion())
   
@@ -43,7 +43,7 @@ struct CityDetail: View {
           Spacer()
           Menu {
             Button("Create Itinerary") {
-              itineraryViewModel.showGenerateItinerarySheet2 = true
+              navigationState.showGenerateItinerarySheet2 = true
             }
           } label: {
             Image(systemName: "ellipsis.circle")
@@ -91,7 +91,7 @@ struct CityDetail: View {
     .navigationBarTitleDisplayMode(.inline)
     .toolbarBackground(.automatic, for: .navigationBar)
     .ignoresSafeArea(edges: .top)
-    .fullScreenCover(isPresented: $itineraryViewModel.showGenerateItinerarySheet2) {
+    .fullScreenCover(isPresented: $navigationState.showGenerateItinerarySheet2) {
       GenerateItineraryView(city: city)
     }
   }

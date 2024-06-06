@@ -9,25 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
   
+  @EnvironmentObject var navigationState: NavigationState
+  
   var body: some View {
-    TabView {
+    TabView(selection: $navigationState.selectedTab) {
       CityList(cities: City.sampleData)
         .tabItem { 
           Image(systemName: "building.2.fill")
           Text("Explore")
         }
+        .tag(Tab.city)
       
       ItineraryList()
         .tabItem {
           Image(systemName: "point.bottomleft.forward.to.point.topright.filled.scurvepath")
           Text("Itinerary")
         }
+        .tag(Tab.itinerary)
       
       ProfileView()
         .tabItem {
           Image(systemName: "person.fill")
           Text("Profile")
         }
+        .tag(Tab.profile)
     }
   }
 }
@@ -36,5 +41,7 @@ struct ContentView: View {
   ContentView()
     .environmentObject(ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService())))
     .environmentObject(ProfileViewModel())
+    .environmentObject(NavigationState())
+    .environmentObject(CityViewModel())
     .tint(.green)
 }

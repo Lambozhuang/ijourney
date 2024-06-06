@@ -13,6 +13,7 @@ struct GenerateItineraryView: View {
   
   @EnvironmentObject var profileViewModel: ProfileViewModel
   @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  @EnvironmentObject var navigationState: NavigationState
   
   @State private var showEditInterestLevel = false
   @State private var navigateToNewItineraryView = false
@@ -64,21 +65,21 @@ struct GenerateItineraryView: View {
           Text("Additional Information")
         }
       }
-      .disabled(itineraryViewModel.isLoadingNewItinerary)
+      .disabled(navigationState.isLoadingNewItinerary)
       .navigationTitle("Generate Itinerary")
       .navigationBarTitleDisplayMode(.large)
       .listStyle(.insetGrouped)
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
           Button("Cancel", role: .cancel) {
-            itineraryViewModel.showGenerateItinerarySheet2 = false
+            navigationState.showGenerateItinerarySheet2 = false
           }
         }
         ToolbarItem(placement: .confirmationAction) {
           Button("Create") {
             createItinerary()
           }
-          .disabled(itineraryViewModel.isLoadingNewItinerary)
+          .disabled(navigationState.isLoadingNewItinerary)
         }
       }
       .navigationDestination(isPresented: $navigateToNewItineraryView) {
@@ -92,7 +93,7 @@ struct GenerateItineraryView: View {
   
   private func createItinerary() {
     userPrompt = itineraryViewModel.composeUserPrompt(city: city, startDate: startDate, endDate: endDate, interests: profileViewModel.profile.interests)
-    itineraryViewModel.isLoadingNewItinerary = true
+    navigationState.isLoadingNewItinerary = true
     navigateToNewItineraryView = true
   }
 }
@@ -104,6 +105,7 @@ struct GenerateItineraryView: View {
       GenerateItineraryView(city: City(name: "Paris", countryCode: "FR", countryName: "France"))
         .environmentObject(ProfileViewModel())
         .environmentObject(itineraryViewModel)
+        .environmentObject(NavigationState())
     }
   }
   return Preview()

@@ -13,6 +13,7 @@ struct ijourneyApp: App {
   @StateObject private var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService()))
   @StateObject private var profileViewModel = ProfileViewModel()
   @StateObject private var cityViewModel = CityViewModel()
+  @StateObject private var navigationState = NavigationState()
   
   var body: some Scene {
     WindowGroup {
@@ -20,6 +21,7 @@ struct ijourneyApp: App {
         .environmentObject(itineraryViewModel)
         .environmentObject(profileViewModel)
         .environmentObject(cityViewModel)
+        .environmentObject(navigationState)
         .tint(.green)
     }
     
