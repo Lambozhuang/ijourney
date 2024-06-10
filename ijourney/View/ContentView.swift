@@ -34,6 +34,9 @@ struct ContentView: View {
         }
         .tag(Tab.profile)
     }
+    .sheet(isPresented: $navigationState.isFirstLaunch) {
+      WelcomeView()
+    }
   }
 }
 

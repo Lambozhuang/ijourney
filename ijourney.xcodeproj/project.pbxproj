@@ -24,6 +24,8 @@
 		5B6B7D592BF6CEC00040B5AA /* POIDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B7D582BF6CEC00040B5AA /* POIDetail.swift */; };
 		5BA894512BEA5CE300BF3E48 /* ItineraryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA894502BEA5CE300BF3E48 /* ItineraryCard.swift */; };
 		5BA894592BEA948300BF3E48 /* ItineraryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA894582BEA948300BF3E48 /* ItineraryDetail.swift */; };
+		5BAF6F682C1757FE00927BF4 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAF6F672C1757FE00927BF4 /* WelcomeView.swift */; };
+		5BAF6F6A2C175B1B00927BF4 /* WelcomeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAF6F692C175B1B00927BF4 /* WelcomeFormView.swift */; };
 		5BC1C3C22BF6B87F005CDD72 /* POIList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1C3C12BF6B87F005CDD72 /* POIList.swift */; };
 		5BC1C3C42BF6BA56005CDD72 /* POICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1C3C32BF6BA56005CDD72 /* POICard.swift */; };
 		5BC1C3C62BF6BB45005CDD72 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1C3C52BF6BB45005CDD72 /* PointOfInterest.swift */; };
@@ -101,6 +103,8 @@
 		5B6B7D582BF6CEC00040B5AA /* POIDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetail.swift; sourceTree = "<group>"; };
 		5BA894502BEA5CE300BF3E48 /* ItineraryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryCard.swift; sourceTree = "<group>"; };
 		5BA894582BEA948300BF3E48 /* ItineraryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryDetail.swift; sourceTree = "<group>"; };
+		5BAF6F672C1757FE00927BF4 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		5BAF6F692C175B1B00927BF4 /* WelcomeFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeFormView.swift; sourceTree = "<group>"; };
 		5BC1C3C12BF6B87F005CDD72 /* POIList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIList.swift; sourceTree = "<group>"; };
 		5BC1C3C32BF6BA56005CDD72 /* POICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POICard.swift; sourceTree = "<group>"; };
 		5BC1C3C52BF6BB45005CDD72 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				5BF470DC2BF684040012CD72 /* City */,
 				5BF470DD2BF6840F0012CD72 /* Itinerary */,
 				5BF470DE2BF684140012CD72 /* Profile */,
+				5BAF6F6B2C175ED500927BF4 /* Welcome */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,6 +280,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5BAF6F6B2C175ED500927BF4 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				5BAF6F672C1757FE00927BF4 /* WelcomeView.swift */,
+				5BAF6F692C175B1B00927BF4 /* WelcomeFormView.swift */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		5BCFB8452BF79B6E00A93C9F /* City */ = {
@@ -502,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD2DDD82C157FEE00817982 /* Unsplash.swift in Sources */,
+				5BAF6F682C1757FE00927BF4 /* WelcomeView.swift in Sources */,
 				5BCFB8702BF95C4700A93C9F /* AboutView.swift in Sources */,
 				5BA894592BEA948300BF3E48 /* ItineraryDetail.swift in Sources */,
 				5BCFB8592BF7AE8B00A93C9F /* ItineraryService.swift in Sources */,
@@ -543,6 +558,7 @@
 				5BCFB8672BF808F500A93C9F /* Country.swift in Sources */,
 				5BCFB83D2BF7836600A93C9F /* ItineraryError.swift in Sources */,
 				5B501B2B2BFCE16300A1715D /* NewItineraryView.swift in Sources */,
+				5BAF6F6A2C175B1B00927BF4 /* WelcomeFormView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

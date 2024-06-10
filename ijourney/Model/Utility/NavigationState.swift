@@ -9,6 +9,8 @@ import Foundation
 
 class NavigationState: ObservableObject {
   
+  @Published var isFirstLaunch: Bool
+  
   @Published var selectedTab: Tab = .city
   
   @Published var showGenerateItinerarySheet1 = false
@@ -18,6 +20,20 @@ class NavigationState: ObservableObject {
   func dismissAll() {
     showGenerateItinerarySheet1 = false
     showGenerateItinerarySheet2 = false
+  }
+  
+  init() {
+    let userDefaults = UserDefaults.standard
+    if userDefaults.bool(forKey: "hasLaunchedBefore") {
+      self.isFirstLaunch = false
+    } else {
+      self.isFirstLaunch = true
+    }
+  }
+  
+  func setHasLaunchedBefore() {
+    let userDefaults = UserDefaults.standard
+    userDefaults.set(true, forKey: "hasLaunchedBefore")
   }
 }
 
