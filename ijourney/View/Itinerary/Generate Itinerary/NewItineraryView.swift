@@ -23,6 +23,7 @@ struct NewItineraryView: View {
   let userPrompt: String
   let startDate: Date
   let endDate: Date
+  let city: City
   
   var body: some View {
     NavigationStack {
@@ -82,9 +83,13 @@ struct NewItineraryView: View {
   
   private func generateItinerary() async {
     do {
-      var itinerary = try await itineraryViewModel.service.fetchItinerary(userPrompt: userPrompt)
+      var itinerary = try await itineraryViewModel.generateItinerary(userPrompt: userPrompt)
       itinerary.startDate = startDate
       itinerary.endDate = endDate
+      itinerary.cityName = city.name
+      itinerary.countryName = city.countryName
+      itinerary.countryCode = city.countryCode
+      (itinerary.latitude, itinerary.longitude) = try await itineraryViewModel.getCoordinates(for: City(name: itinerary.cityName!, countryCode: itinerary.countryCode!, countryName: itinerary.countryName!))
       self.itinerary = itinerary
       withAnimation {
         self.navigationState.isLoadingNewItinerary = false
@@ -104,7 +109,7 @@ struct NewItineraryView: View {
     @StateObject var itineraryViewModel = ItineraryViewModel(service: ItineraryService(networkService: TestItineraryNetworkService()))
     @StateObject var navigationState = NavigationState()
     var body: some View {
-      NewItineraryView(userPrompt: "", startDate: .now, endDate: .now)
+      NewItineraryView(userPrompt: "", startDate: .now, endDate: .now, city: City.sampleData[0])
         .environmentObject(itineraryViewModel)
         .environmentObject(CityViewModel())
         .environmentObject(navigationState)

@@ -17,6 +17,9 @@ struct Itinerary: Identifiable, Codable {
   var endDate: Date? = nil
   var imageURL: URL? = nil
   var days: [Day] = []
+  var countryCode: String?
+  var latitude: Double?
+  var longitude: Double?
   
   enum CodingKeys: String, CodingKey {
     case cityName = "city_name"

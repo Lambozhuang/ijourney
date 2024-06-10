@@ -10,8 +10,12 @@ import MapKit
 import Glur
 
 struct ItineraryDetail: View {
+  
+  @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion())
+
   var isPreview: Bool
   var itinerary: Itinerary
+  
   var body: some View {
     
     ScrollView {
@@ -50,14 +54,30 @@ struct ItineraryDetail: View {
             .foregroundStyle(.secondary)
         }
         
-        Text("Location")
-          .font(.title3)
-          .bold()
-        
-        Map()
-          .frame(height: 250)
-          .clipShape(.rect(cornerRadius: 10))
-          .padding(.bottom, 20)
+        if let latitude = itinerary.latitude, 
+           let longitude = itinerary.longitude,
+           let cityName = itinerary.cityName,
+           let countryName = itinerary.countryName {
+          HStack(alignment: .firstTextBaseline) {
+            Text("Location")
+              .font(.title3)
+              .bold()
+            Spacer()
+            Button {
+              openInMaps(cityName: cityName, countryName: countryName)
+            } label: {
+              Text("View in Maps")
+            }
+          }
+          
+          Map(position: $cameraPosition)
+            .frame(height: 250)
+            .clipShape(.rect(cornerRadius: 10))
+            .padding(.bottom, 30)
+            .onAppear {
+              cameraPosition = MapCameraPosition.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)))
+            }
+        }
         
         Text("Itinerary")
           .font(.title3)
@@ -70,13 +90,10 @@ struct ItineraryDetail: View {
               .font(.body)
               .bold()
               .foregroundStyle(.secondary)
-            POIList(day: day)
-            
+            POIList(day: day, itinerary: itinerary)
           }
           .padding(.bottom)
-          
         }
-        
         Spacer()
       }
       .padding()
@@ -96,6 +113,41 @@ struct ItineraryDetail: View {
           }
         }
       }
+    }
+  }
+  
+  private func openInMaps(cityName: String, countryName: String) {
+    let request = MKLocalSearch.Request()
+    request.naturalLanguageQuery = "\(cityName), \(countryName)"
+    
+    request.region = MKCoordinateRegion(MKMapRect.world)
+    
+    let search = MKLocalSearch(request: request)
+    search.start { response, error in
+      guard let response = response else {
+        print("MKLocalSearch response error")
+        return
+      }
+      
+      // Filter results to find the city with the exact name and country
+      let filteredItems = response.mapItems.filter { item in
+        print(item.placemark)
+        if let locality = item.placemark.locality,
+           let country = item.placemark.country {
+          return locality == cityName && country == countryName
+        }
+        return false
+      }
+      
+      guard let mapItem = filteredItems.first else {
+        print("No matching results for the city")
+        return
+      }
+      
+      mapItem.openInMaps(launchOptions: [
+        MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: mapItem.placemark.coordinate),
+        MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+      ])
     }
   }
 }

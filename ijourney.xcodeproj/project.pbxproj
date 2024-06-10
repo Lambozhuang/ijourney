@@ -58,6 +58,10 @@
 		5BCFB8702BF95C4700A93C9F /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFB86F2BF95C4700A93C9F /* AboutView.swift */; };
 		5BD2DDD12BFD836D00817982 /* Double+clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2DDD02BFD836D00817982 /* Double+clamped.swift */; };
 		5BD2DDD62C11A69F00817982 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2DDD52C11A69F00817982 /* NavigationState.swift */; };
+		5BD2DDD82C157FEE00817982 /* Unsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2DDD72C157FEE00817982 /* Unsplash.swift */; };
+		5BD2DDDA2C15818100817982 /* UnsplashImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2DDD92C15818100817982 /* UnsplashImageService.swift */; };
+		5BD2DDDC2C15834600817982 /* UnsplashAPI.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BD2DDDB2C15834600817982 /* UnsplashAPI.plist */; };
+		5BD2DDDE2C16FC3700817982 /* example-response-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BD2DDDD2C16FC3700817982 /* example-response-3.json */; };
 		5BF470DB2BF677F30012CD72 /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF470DA2BF677F30012CD72 /* Glur */; };
 		5BF470E02BF684350012CD72 /* CityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470DF2BF684350012CD72 /* CityDetail.swift */; };
 		5BF470E22BF6854C0012CD72 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF470E12BF6854C0012CD72 /* ContentView.swift */; };
@@ -130,6 +134,10 @@
 		5BCFB86F2BF95C4700A93C9F /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		5BD2DDD02BFD836D00817982 /* Double+clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+clamped.swift"; sourceTree = "<group>"; };
 		5BD2DDD52C11A69F00817982 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
+		5BD2DDD72C157FEE00817982 /* Unsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsplash.swift; sourceTree = "<group>"; };
+		5BD2DDD92C15818100817982 /* UnsplashImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImageService.swift; sourceTree = "<group>"; };
+		5BD2DDDB2C15834600817982 /* UnsplashAPI.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UnsplashAPI.plist; sourceTree = "<group>"; };
+		5BD2DDDD2C16FC3700817982 /* example-response-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "example-response-3.json"; sourceTree = "<group>"; };
 		5BF470DF2BF684350012CD72 /* CityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetail.swift; sourceTree = "<group>"; };
 		5BF470E12BF6854C0012CD72 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BF470E32BF685820012CD72 /* CityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
@@ -166,6 +174,7 @@
 				5BA894552BEA8D6B00BF3E48 /* Frameworks */,
 				5B24F6752BFC167E0006AD68 /* AzureOpenAIAPI.plist */,
 				5BC60E9A2BFD5B6F00B75A2A /* GeoDBAPI.plist */,
+				5BD2DDDB2C15834600817982 /* UnsplashAPI.plist */,
 				5B24F67A2BFC18550006AD68 /* AzureOpenAIAPI.example.plist */,
 			);
 			sourceTree = "<group>";
@@ -203,6 +212,7 @@
 				5B3ACBE92BFCFAD400E94B45 /* example-response-2.json */,
 				5BCFB86B2BF8ECAB00A93C9F /* example-itinerary-1.json */,
 				5BCFB86A2BF8ECAB00A93C9F /* example-itinerary-2.json */,
+				5BD2DDDD2C16FC3700817982 /* example-response-3.json */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -307,6 +317,7 @@
 				5BCFB8562BF7AE2900A93C9F /* NetworkService.swift */,
 				5BCFB8582BF7AE8B00A93C9F /* ItineraryService.swift */,
 				5BC60E942BFD54E300B75A2A /* CityService.swift */,
+				5BD2DDD92C15818100817982 /* UnsplashImageService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -335,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				5BD2DDD52C11A69F00817982 /* NavigationState.swift */,
+				5BD2DDD72C157FEE00817982 /* Unsplash.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -467,8 +479,10 @@
 				5BCFB86C2BF8ECAC00A93C9F /* example-itinerary-2.json in Resources */,
 				5B3ACBEA2BFCFAD400E94B45 /* example-response-2.json in Resources */,
 				5B24F6762BFC167E0006AD68 /* AzureOpenAIAPI.plist in Resources */,
+				5BD2DDDC2C15834600817982 /* UnsplashAPI.plist in Resources */,
 				5BCFB85F2BF7FE8300A93C9F /* country-by-abbreviation.json in Resources */,
 				5B18D3912BE2D9F000C9827B /* Assets.xcassets in Resources */,
+				5BD2DDDE2C16FC3700817982 /* example-response-3.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BD2DDD82C157FEE00817982 /* Unsplash.swift in Sources */,
 				5BCFB8702BF95C4700A93C9F /* AboutView.swift in Sources */,
 				5BA894592BEA948300BF3E48 /* ItineraryDetail.swift in Sources */,
 				5BCFB8592BF7AE8B00A93C9F /* ItineraryService.swift in Sources */,
@@ -499,6 +514,7 @@
 				5BD2DDD62C11A69F00817982 /* NavigationState.swift in Sources */,
 				5BC1C3C22BF6B87F005CDD72 /* POIList.swift in Sources */,
 				5BCFB8652BF8071B00A93C9F /* GICityListView.swift in Sources */,
+				5BD2DDDA2C15818100817982 /* UnsplashImageService.swift in Sources */,
 				5BC60EA72BFD657400B75A2A /* TestItineraryNetworkService.swift in Sources */,
 				5BCFB8442BF79B6A00A93C9F /* City.swift in Sources */,
 				5B6B7D592BF6CEC00040B5AA /* POIDetail.swift in Sources */,

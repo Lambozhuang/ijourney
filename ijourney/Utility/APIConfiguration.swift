@@ -12,10 +12,12 @@ class APIConfiguration {
   
   private var chatGPTConfiguration: [String: Any] = [:]
   private var geoDBConfiguration: [String: Any] = [:]
+  private var unsplashConfiguration: [String: Any] = [:]
   
   private init() {
     loadChatGPTConfiguration()
     loadGeoDBConfiguration()
+    
   }
   
   private func loadChatGPTConfiguration() {
@@ -44,6 +46,19 @@ class APIConfiguration {
     }
   }
   
+  private func loadUnsplashConfiguration() {
+    if let url = Bundle.main.url(forResource: "UnsplashAPI", withExtension: "plist") {
+      do {
+        let data = try Data(contentsOf: url)
+        if let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any] {
+          unsplashConfiguration = plist
+        }
+      } catch {
+        print("Error reading plist: \(error)")
+      }
+    }
+  }
+  
   var chatGPTAPIKey: String? {
     return chatGPTConfiguration["APIKey"] as? String
   }
@@ -62,5 +77,9 @@ class APIConfiguration {
   
   var geoDBEndpoint: String? {
     return geoDBConfiguration["Endpoint"] as? String
+  }
+  
+  var unsplashKey: String? {
+    return unsplashConfiguration["Key"] as? String
   }
 }

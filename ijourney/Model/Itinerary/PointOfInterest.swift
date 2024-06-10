@@ -24,7 +24,7 @@ struct PointOfInterest: Identifiable, Hashable, Codable {
     case description
   }
   
-  init(name: String, imageURL: URL?, type: InterestType, latitude: Double, longitude: Double, description: String? = nil) {
+  init(name: String, imageURL: URL?, type: InterestType, latitude: Double? = nil, longitude: Double? = nil, description: String? = nil) {
     self.id = UUID()
     self.name = name
     self.imageURL = imageURL

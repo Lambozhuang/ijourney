@@ -21,11 +21,11 @@ final class ItineraryServiceIntegrationTests: XCTestCase {
   
   func testFetchItinerarySuccess() async throws {
     
-    let sampleCity = City(name: "Paris", countryCode: "FR", countryName: "France")
+    let sampleCity = City(name: "Rome", countryCode: "IT", countryName: "Italy")
     
     var sampleInterests = Interests()
-    sampleInterests[.historical] = .high
-    sampleInterests[.cultural] = .medium
+    sampleInterests[.historical] = .veryHigh
+    sampleInterests[.cultural] = .high
     sampleInterests[.nature] = .low
     
     let userPrompt = service.composeUserPrompt(city: sampleCity, startDate: Date(), endDate: Calendar.current.date(byAdding: .day, value: 3, to: Date())!, interests: sampleInterests)
@@ -35,8 +35,8 @@ final class ItineraryServiceIntegrationTests: XCTestCase {
 
       print(itinerary)
 
-      XCTAssertEqual(itinerary.cityName, "Paris")
-      XCTAssertEqual(itinerary.countryName, "France")
+      XCTAssertEqual(itinerary.cityName, "Rome")
+      XCTAssertEqual(itinerary.countryName, "Italy")
       XCTAssertEqual(itinerary.days.count, 4)
     } catch {
       XCTFail("Failed to fetch itinerary: \(error)")

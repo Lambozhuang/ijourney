@@ -10,12 +10,14 @@ import SwiftUI
 struct POIList: View {
   var day: Day
   
+  let itinerary: Itinerary
+  
   var body: some View {
     
     LazyVStack {
       ForEach(day.pointOfInterestList) { poi in
         NavigationLink {
-          POIDetail(poi: poi)
+          POIDetail(poi: poi, itinerary: itinerary)
         } label: {
           POICard(poi: poi)
         }
@@ -40,5 +42,5 @@ struct POIList: View {
 }
 
 #Preview {
-  POIList(day: Day.sampleData)
+  POIList(day: Day.sampleData, itinerary: Itinerary.sampleData[0])
 }

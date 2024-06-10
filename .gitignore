@@ -1,3 +1,5 @@
 # Ignore API files
 AzureOpenAIAPI.plist
+AzureOpenAIAPI.Sweden.plist
 GeoDBAPI.plist
+UnsplashAPI.plist

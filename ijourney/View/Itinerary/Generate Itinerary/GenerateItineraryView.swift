@@ -83,7 +83,7 @@ struct GenerateItineraryView: View {
         }
       }
       .navigationDestination(isPresented: $navigateToNewItineraryView) {
-        NewItineraryView(userPrompt: userPrompt, startDate: startDate, endDate: endDate)
+        NewItineraryView(userPrompt: userPrompt, startDate: startDate, endDate: endDate, city: city)
       }
     }
     .sheet(isPresented: $showEditInterestLevel) {
