@@ -11,7 +11,13 @@ import Glur
 
 struct ItineraryDetail: View {
   
+  @Environment(\.dismiss) var dismiss
+  
+  @EnvironmentObject var itineraryViewModel: ItineraryViewModel
+  
   @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion())
+  
+  @State private var showDiscardAlert = false
 
   var isPreview: Bool
   var itinerary: Itinerary
@@ -106,11 +112,22 @@ struct ItineraryDetail: View {
         if !isPreview {
           Menu {
             Button("Delete Itinerary", role: .destructive) {
-              
+              showDiscardAlert = true
             }
           } label: {
             Image(systemName: "ellipsis.circle")
           }
+        }
+      }
+    }
+    .confirmationDialog("Are you sure?", isPresented: $showDiscardAlert) {
+      Button("Delete Itinerary", role: .destructive) {
+        
+        if let index = itineraryViewModel.itineraryList.firstIndex(where: { $0 == itinerary }) {
+          itineraryViewModel.itineraryList.remove(at: index)
+          dismiss()
+        } else {
+          print("Cannot find the itinerary to delete")
         }
       }
     }
@@ -156,4 +173,5 @@ struct ItineraryDetail: View {
 
 #Preview {
   ItineraryDetail(isPreview: false, itinerary: Itinerary.sampleData[0])
+      .environmentObject(ItineraryViewModel())
 }

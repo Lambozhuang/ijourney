@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Itinerary: Identifiable, Codable {
+struct Itinerary: Identifiable, Codable, Equatable {
   
   let id = UUID()
   var cityName: String? = nil
@@ -25,6 +25,17 @@ struct Itinerary: Identifiable, Codable {
     case cityName = "city_name"
     case countryName = "country_name"
     case days = "itinerary_list"
+  }
+  
+  static func == (lhs: Itinerary, rhs: Itinerary) -> Bool {
+    return lhs.id == rhs.id &&
+    lhs.cityName == rhs.cityName &&
+    lhs.countryName == rhs.countryName &&
+    lhs.startDate == rhs.startDate &&
+    lhs.endDate == rhs.endDate &&
+    lhs.imageURL == rhs.imageURL &&
+    lhs.days.count == rhs.days.count &&
+    lhs.countryCode == rhs.countryCode
   }
   
   init() {
