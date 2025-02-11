@@ -8,7 +8,11 @@ An iOS app developed with SwiftUI that integrates ChatGPT for travel information
 
 - SwiftUI
 - MapKit
+- XCTest
 - Azure's OpenAI API
+- GeoDB API
+- Unsplash API
+- [Glur](https://github.com/joogps/Glur)
 
 ## Documentation
 
